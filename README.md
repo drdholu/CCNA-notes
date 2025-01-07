@@ -1,0 +1,1 @@
+try opening the notes in "obsidian" to see the images 

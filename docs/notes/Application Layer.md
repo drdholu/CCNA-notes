@@ -21,6 +21,7 @@
 - P2P is self-scalable
 - For example, in a P2P file-sharing application, although each peer generates workload by requesting files, each peer also adds service capacity to the system by distributing files to other peers.
 
+![[Pasted image 20240920232159.png]]
 ## Processes
 
 ### Client Server Process
@@ -48,6 +49,11 @@
 	- To support application there must be a protocol that can ensure data sent from one client is sent and received completely by the client on the other end.
 	- When a transport-layer protocol doesn’t provide reliable data transfer, some of the data sent by the sending process may never arrive at the receiving process. This may be acceptable for **loss-tolerant applications**
 - Throughput
+	- rate at which senders sends the bits to the receivers side
+	- networks have multiple devices in a bandwidth, making the throughput fluctuate.
+	- a service provided by the transport layer is to guarantee throughput of **r bits/sec** upon request of the host.
+	- if the throughput requirement is not met, the hosts may retry or giveup. applications with througput requirements are **bandwidth sensitive applications** (ex: multimedia apps)
+	- on the other hand, **elastic applications**, can adjust the to the amount of available bandwidith. (ex: email, file transfer, web transfers).
 - Timing
 - Security
 
@@ -58,6 +64,9 @@
 	- Connection Oriented
 	- Reliable data transfer
 - Enhanced TCP with SSL
+	- end-to-end encryption
+	- enhancements are made in application layer
+	- ssl has its own socket API
 - UDP
 	- Connectionless oriented
 	- No congestion protocol
@@ -70,7 +79,7 @@ Application layer protocols define how an applications processes run on differen
 ## Web & HTTP
 
 ### HTTP Overview
-
+- **HTTP (HyperText Transfer Protocol)** is a protocol used for transferring data over the web. It defines how messages are formatted and transmitted.
 - Two implementations of HTTP, **server and client**
 - **Web server** -> server and **web browsers** -> client 
 - First TCP connection b/w client and server is established and then communication is done through their socket interface
@@ -91,7 +100,8 @@ Application layer protocols define how an applications processes run on differen
 - 1 RTT - Send TCP initiation request sent, server ack sent
 - 1 RTT - HTTP req w/ client ack sent, html file sent
 - New connection for each requested object.
-- TCP buffers and variables must be kept in both client and server, this can be a burden to both.
+- TCP buffers and variables must be kept in both client and server (to maintain TCP state), this can be a burden to both sides.
+- ![[Pasted image 20240915190330.png]]
 
 #### HTTP w/ persistent connection
 
@@ -99,12 +109,17 @@ Application layer protocols define how an applications processes run on differen
 - TCP connection is made and left on until there isn't any communication/req for a while (this can be configured)
 - multiple Web pages residing on the same server can be sent from the server to the same client over a single persistent TCP connection. These requests for objects can be made back-to-back, without waiting for replies to pending requests (pipelining)
 - Recent HTTP 1.1 allows multiple server requests to be interleaved in the same connection. It has a priority mechanism which selects which request to respond to.
+- ![[Pasted image 20240915190249.png]]
+- ![[Pasted image 20240915190401.png]] 
 
+> RTT = 2 * propagation time
+> Total = 2RTT + transmit time
 
 ### HTTP Message format
 
 There's two types of messages, requests and responses
 
+![[Pasted image 20240921003952.png]]
 #### Request Message
 
 ```bash
@@ -153,7 +168,7 @@ When revisiting, the browser sends requests with the cookie file,
 
 ### Web Caching
 
-- aka Proxy server
+- aka **Proxy server**
 - satisfies the webs http req on behalf of the web server
 - has its own disk storage space & keeps copies of recently requested objects
 - both client & server at the same time
@@ -286,8 +301,8 @@ Mail access protocols
 	- Server responds with `+OK` & `-ERR`
 	- **Authorization** has two principle commands, `user<username>` & `pass<password>` 
 	- **Transaction phase** has two methods which can be configured by the user, "download and delete" & "download and keep".
-		- download and delete mode allows the user to use the `list, retr, dele` commands
-		- in download and keep mode the user agent leaves the messages on the mail server after downloading them.
+		- *download and delete* mode allows the user to use the `list, retr, dele` commands
+		- in *download and keep* mode the user agent leaves the messages on the mail server after downloading them.
 	- After the user issues wtv commands they want, the user runs `quit` and POP3 server enters the **update phase**
 	- This mode isn't really useful if the user is a nomad who wants to check their mails on different servers over different laptops.
 	- POP3 does not carry state information over sessions, it only keeps state information (i.e which mails have been marked for deletion) within a session.
@@ -297,8 +312,22 @@ Mail access protocols
 	- IMAP maintains state information across sessions
 	- Allows user to access/download only a part of a message in low bandwidth connection areas.
 
-> In web-based emails, the servers and agents now connect over HTTP. The user agent pulls emails from the mail server using HTTP rather than POP3 and IMAP. When the user wants to send an email, the user agent sends it to the mail server using HTTP.
-> However the mail servers still send and receive messages through SMTP.
+> In web-based emails, **the servers and agents now connect over HTTP**. The user agent pulls emails from the mail server using HTTP rather than POP3 and IMAP. When the user wants to send an email, the user agent sends it to the mail server using HTTP.
+> However the **mail servers still send and receive messages through SMTP**.
+
+| Feature                          | POP3                                                      | IMAP                                                      |
+|----------------------------------|-----------------------------------------------------------|-----------------------------------------------------------|
+| **Email Storage**                | Downloads emails to local device; deletes from server.   | Emails remain on the server; only synchronized.           |
+| **Device Access**                | Accessed from one device at a time.                       | Accessible from multiple devices simultaneously.           |
+| **Email Organization**           | Limited organization; cannot create folders on the server.| Allows creation and management of folders on the server.  |
+| **Synchronization**              | No synchronization; changes not reflected across devices. | Synchronizes changes across all devices (e.g., read/unread status). |
+| **Offline Access**               | Emails can be read offline after download.                | Requires internet connection to access emails fully.      |
+| **Connection Ports**             | Port 110 (unencrypted), 995 (encrypted).                 | Port 143 (unencrypted), 993 (encrypted).                 |
+| **Use Case**                     | Suitable for single-device use, limited internet access.  | Ideal for users needing access from multiple devices.     |
+| **Server Load**                  | Lower server load due to local storage of emails.         | Higher server load due to email storage and synchronization. |
+| **Backup and Recovery**          | Emails lost if deleted after download unless kept on server.| Multiple copies stored, allowing recovery if local data is lost. |
+| **Complexity**                   | Simpler and easier to implement.                          | More complex, requiring more resources and management.    |
+
 
 ## DNS Servers
 
@@ -413,6 +442,17 @@ The above requests are both **iterative** & **recursive**.
 
 ![[Pasted image 20240826201041.png]]
 
+Here’s a comparison of iterative and recursive DNS requests in table form:
+
+| Feature                          | Iterative DNS Requests                                   | Recursive DNS Requests                                   |
+|----------------------------------|---------------------------------------------------------|---------------------------------------------------------|
+| **Client Involvement**           | High; client queries multiple servers sequentially.     | Low; client delegates all queries to the DNS server.    |
+| **Caching**                      | Primarily at the resolver/server level; limited client-side caching. | Local caching at the DNS resolver to speed up future requests. |
+| **Process Flow**                 | Client receives referrals from servers and queries each one until a response is obtained. | Resolver queries other servers on behalf of the client until a complete answer is found. |
+| **Resolving Server Behavior**    | Server provides referrals to other servers without fetching the complete answer. | Server performs all necessary queries and returns the complete answer or an error. |
+| **Efficiency**                   | Can be less efficient due to multiple queries by the client. | More efficient for the client as it requires fewer actions on their part. |
+| **Use Case**                     | Useful in scenarios where clients need to manage their own queries or when using lightweight resolvers. | Commonly used in most DNS lookups, especially in user-facing applications where ease of use is essential. |
+
 ### DNS caching
 
 DNS caching plays a big role in DNS resolving. It reduces delay performance and also reduces the traffic in the network.
@@ -450,31 +490,32 @@ Servers that implement DNS distributed servers also store **resource records (rr
 
 The query and reply sent by a DNS server follow a similar pattern
 
-1. Header Section (12 bits)
+1. Header Section (12 bytes)
 	- 16 bit identifier identifies the query
-	- Flags such as, 1 bit query(0)/reply(0), 1 bit auth flag, 1 bit recursion-desired flag, 1 bit recursion-available flag
-2. Question section
+	- Flags such as, 1 bit query(0)/reply(1), 1 bit auth flag, 1 bit recursion-desired flag, 1 bit recursion-available flag
+2. Question section (variable)
 	- **Name** field which contains the name of the thing that is being queried.
 	- **Type** field which tells about the type of the question being asked about the name (A, MX, etc.).
-3. Answer section
+3. Answer section (Variable)
 	- Contains the resource records for the name that was queried
 	- May contain multiple rr's
-4. Authority section
+4. Authority section (variable)
 	- Contains records of authoritative servers
-5. Additional section
+5. Additional section (variable)
 	- Additional info such as CNAME's of email/hostname aliases.
 
 ![[Pasted image 20240826223758.png]]
 
-To illustrate the structure of a DNS query and response, consider a request to resolve the domain name `example.com`. Table below shows the interpretation of the bytes of the request. (Note that the exact structure of the UDP datagram consists of just the bytes shown, concatenated in order: `123401000001...`) The header starts with a 16-bit randomly chosen identifier denoted as XID (`1234` in our example), followed by a 16-bit value that serves as a bit mask. The structure of the bit mask is shown in [Table 4.8](https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/UDPSockets.html#tbl4-8). The rest of the header after the bit-mask indicates how many entries are in each of the other fields, each as a 16-bit value.
+To illustrate the structure of a DNS query and response, consider a request to resolve the domain name `example.com`. Table below shows the interpretation of the bytes of the request. (Note that the exact structure of the UDP datagram consists of just the bytes shown, concatenated in order: `123401000001...`) The header starts with a **16-bit randomly chosen identifier** denoted as *XID* (`1234` in our example), followed by a 16-bit value that serves as *a bit mask*. The structure of the bit mask is shown in [Table 4.8](https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/UDPSockets.html#tbl4-8). The rest of the header after the bit-mask indicates how many entries are in each of the other fields, each as a 16-bit value.
 
+Table 4.7
 ![[Pasted image 20240828085815.png]]
 
-[Table 4.8](https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/UDPSockets.html#tbl4-8) illustrates the structure of the 16-bit flag field that follows the XID field of a DNS header. In the message shown in [Table 4.7](https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/UDPSockets.html#tbl4-7), the only bit set is the `Recursion Desired` (`RD`) bit. The `Opcode` field indicates that this is a standard query (`SQUERY = 0000`). In the response shown in [Table 4.9](https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/UDPSockets.html#tbl4-9), the flag value is `0x8180`, which means that the Query Response (`QR`) bit has been set to indicate the message is a response, as well as the `Recursion Available` (`RA`) bit. The `RCODE` field is used to indicate if an error occurs, and all 0 bits there indicates there was no error processing the query. Information on the other fields is available in RFC 1035.
+[Table 4.8](https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/UDPSockets.html#tbl4-8) illustrates the structure of the **16-bit flag field** that *follows the XID field of a DNS header*. In the message shown in [Table 4.7](https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/UDPSockets.html#tbl4-7), the only bit set is the `Recursion Desired` (`RD`) bit. The `Opcode` field indicates that this is a standard query (`SQUERY = 0000`). In the response shown in [Table 4.9](https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/UDPSockets.html#tbl4-9), the flag value is `0x8180`, which means that the Query Response (`QR`) bit has been set to indicate the message is a response, as well as the `Recursion Available` (`RA`) bit. **The `RCODE` field is used to indicate if an error occurs**, and all 0 bits there indicates there was no error processing the query. Information on the other fields is available in RFC 1035.
 
 ![[Pasted image 20240828085910.png]]
 
-[Table 4.9](https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/UDPSockets.html#tbl4-9) shows the response for the query from [Table 4.7](https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/UDPSockets.html#tbl4-7). In the response, the `header` is almost identical to that of the request. The randomly chosen identifier `XID` should match the original request; if the resolver has sent multiple requests, the `XID` field allows the resolver to determine which request is being answered. The bit mask has been modified to denote that this message is a response and the recursive resolution strategy is available. The `header` also indicates that a single answer has been provided. The `question` field is identical to the original request.
+[Table 4.9](https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/UDPSockets.html#tbl4-9) shows the response for the query from [Table 4.7](https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/UDPSockets.html#tbl4-7). In the response, the `header` is almost identical to that of the request. *The randomly chosen identifier `XID` should match the original request*; if the resolver has sent multiple requests, the `XID` field allows the resolver to determine which request is being answered. *The bit mask has been modified to denote that this message is a response* and the recursive resolution strategy is available. The `header` also indicates that *a single answer has been provided*. The `question` field is identical to the original request.
 
 ![[Pasted image 20240828090348.png]]
 

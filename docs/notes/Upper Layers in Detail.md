@@ -40,7 +40,7 @@ When a device communicates with another device, it is assigned a source port to 
 - An ephemeral port is a randomly assigned port used by the sender for communication.
 - It allows the destination to reply to the sender's communication.
 
->Ports with numbers `0-1023` are called system or **well-known** ports; ports with numbers `1024-49151` are called user or **registered** ports, and ports with numbers `49152-65535` are called dynamic, private or **ephemeral** ports.  
+>Ports with numbers `0-1023` are called system or **well-known** ports; ports with numbers `1024-49151` are called user or **registered** ports, and ports with numbers `49152-`65535` are called dynamic, private or **ephemeral** ports.  
 >Registered port numbers are currently assigned by the... IANA... and were assigned by... ICANN... before March 21, 2001, and were assigned by the... USC/ISI... before 1998.
 
 Example Communication:
