@@ -1,0 +1,1572 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Application%20Layer/">
+      
+      
+        <link rel="next" href="../Ethernet%20Cables/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>What is the Internet - Computer Networks</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#what-is-the-internet" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Computer Networks" class="md-header__button md-logo" aria-label="Computer Networks" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Computer Networks
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              What is the Internet
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Index
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Application%20Layer/" class="md-tabs__link">
+          
+  
+  Notes
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Computer Networks" class="md-nav__button md-logo" aria-label="Computer Networks" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Computer Networks
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Notes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Application%20Layer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Application Layer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    What is the Internet
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    What is the Internet
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nuts-and-bolts-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nuts and Bolts Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#services-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Services Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a Protocol?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      network edge
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="network edge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#access-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      access networks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="access networks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ethernet-and-wifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      ethernet and wifi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3g-and-lte" class="md-nav__link">
+    <span class="md-ellipsis">
+      3g and lte
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#physical-media" class="md-nav__link">
+    <span class="md-ellipsis">
+      physical media
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      network core
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="network core">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#packet-switching" class="md-nav__link">
+    <span class="md-ellipsis">
+      packet switching
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="packet switching">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#store-and-forward" class="md-nav__link">
+    <span class="md-ellipsis">
+      store and forward
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queuing-delays-packet-loss" class="md-nav__link">
+    <span class="md-ellipsis">
+      queuing delays &amp; packet loss
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forwarding-tables-and-routing-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      Forwarding Tables and Routing Protocols
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-switching" class="md-nav__link">
+    <span class="md-ellipsis">
+      circuit switching
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="circuit switching">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#network-of-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      network of networks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delay-loss-and-throughput" class="md-nav__link">
+    <span class="md-ellipsis">
+      delay, loss and throughput
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="delay, loss and throughput">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#processing-delay" class="md-nav__link">
+    <span class="md-ellipsis">
+      Processing Delay:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queuing-delay" class="md-nav__link">
+    <span class="md-ellipsis">
+      Queuing Delay:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transmission-delay" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transmission Delay:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#propagation-delay" class="md-nav__link">
+    <span class="md-ellipsis">
+      Propagation Delay:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#end-to-end-delay" class="md-nav__link">
+    <span class="md-ellipsis">
+      end to end delay
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocol-layering" class="md-nav__link">
+    <span class="md-ellipsis">
+      protocol layering
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="protocol layering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#network-protocols-and-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Protocols and Layers:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advantages-of-layering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advantages of Layering:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#potential-drawbacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Potential Drawbacks:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internet-protocol-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internet Protocol Stack:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overview-of-data-transport-through-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview of Data Transport Through Layers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-flow-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Flow Summary
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#routing-through-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Routing Through Layers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Ethernet%20Cables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ethernet Cables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hybrid-Cloud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hybrid Cloud
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IP%20addresses/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IP addresses
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Linux%20networking%20commands/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux networking commands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Network%20Architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Network%20Layer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Layer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Network%20Models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Routers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Routers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Subnet%20Mask/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Subnet Mask
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Subnetting%20%28GPT%20notes%29/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Subnetting in IP Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Switches/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Switches
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Transport%20layer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transport layer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Upper%20Layers%20in%20Detail/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Upper Layers in Detail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../control%20plane/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Control plane
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="what-is-the-internet">What is the Internet</h1>
+<h2 id="nuts-and-bolts-description">Nuts and Bolts Description</h2>
+<p>The internet is a computer network that interconnects billions of computing devices throughout the world. On the internet, all of these devices are called <strong>hosts or end systems</strong>.</p>
+<p><img alt="Internet Diagram" src="Pasted%20image%2020240719174112.png" /></p>
+<p>End systems are connected to each other by a network of <strong>communication links (coaxial, copper, optical, etc.) and packet switches</strong>. Different links can transmit data at different rates.</p>
+<blockquote>
+<p>Transmission rate of a link is measured in bits/second.</p>
+</blockquote>
+<p>When data is to be transferred, it isn't just sent as raw data; it's modified and merged with additional information required by both end systems.</p>
+<p><strong>Sending data system =&gt; Data + Header bytes (</strong>packets<strong>)</strong></p>
+<p>The receiving end system receives the packets and de-structures them to get the original data.</p>
+<p>How does this packet reach the receiver end system though? Something called a <strong>packet switch</strong> is used to <strong>forward</strong> the packet received and send it to the appropriate end system based on the headers present.</p>
+<p>The two most prominent types of packet switches are <strong>Routers</strong> and <strong>Link-Layer switches</strong>.</p>
+<blockquote>
+<p><strong>Routers</strong> =&gt; Access networks (An access network is a type of network which physically connects an end system to the immediate router (also known as the “edge router”) on a path from the end system to any other distant end system.)</p>
+<p><strong>Link Layer Switches</strong> =&gt; Network core (Part of a telecom system that connects users and the network)</p>
+</blockquote>
+<p>The sequence of communication links and switches that are traversed by a packet is known as a <strong>route</strong> or <strong>path</strong>.</p>
+<p>The internet provided to the End systems allows the transfer of data. The internet is provided through <strong>Internet Service Providers (ISPs)</strong>.</p>
+<p>Essentially, each ISP in itself is a network of packet switches and communication links.</p>
+<p>Examples of some network access provided by ISPs are Cable modem/DSL &amp; mobile wireless access.</p>
+<p>Now there are multiple tiers of ISPs that have to be interconnected to provide internet access.</p>
+<ol>
+<li>Lower Tier</li>
+<li>National Tier</li>
+<li>International Upper Tier</li>
+</ol>
+<p>Each of these ISPs are managed and runs the IP Protocol and adheres to the standards that are set by some organizations.</p>
+<p>The IP protocol mentioned above isn't the only protocol, and it isn't only run by ISPs. End systems, switches, and other devices present on the internet also run the protocols.</p>
+<p>The two most important protocols on the internet are:
+1. Transmission Control Protocol (TCP)
+2. Internet Protocol (IP)</p>
+<p>These two protocols are collectively called <strong>TCP/IP</strong>.</p>
+<p>As for the standards mentioned, the Internet standards are developed by the <strong>Internet Engineering Task Force (IETF)</strong>.</p>
+<p>The IETF standards documents are called <strong>Request for Comments (RFCs)</strong>. RFCs define protocols such as TCP, IP, HTTP, etc. There are currently 7,000 RFCs.</p>
+<h2 id="services-description">Services Description</h2>
+<p>The previous section described the internet using its components. But we can also describe it as an <strong>infrastructure that provides services to applications</strong>.</p>
+<p>Traditional applications (email, web surfing, messaging, maps, etc.) are said to be <strong>distributed applications</strong> since they involve <strong>multiple end systems</strong> that exchange data with each other.</p>
+<p>The internet primarily runs on the end systems, and the packet switches help with the exchange of data among end systems.</p>
+<p>But how do these applications run on the end systems? To even make an application first, we need to <strong>write it using a language such as C, JAVA, etc.</strong> </p>
+<p>These programs can be run on end systems independently, but for these programs to transfer data and communicate, we need something called a <strong>socket interface</strong>, which is provided by the Internet.</p>
+<p>The socket interface specifies how a program on the end systems asks the Internet to deliver data to a specific destination.</p>
+<p>Again, this socket interface also has to follow a set of rules that the sending program must follow.</p>
+<h2 id="what-is-a-protocol">What is a Protocol?</h2>
+<p>A protocol is exactly what it says; all activity on the internet that involves two or more communicating remote entities is governed by a protocol.</p>
+<p>A simple example where a protocol is used is on the Web. When we first type the URL of a Web page into a web browser, the computer sends a request to the server. The server receives this and sends an <strong>OK</strong> for the connection. Following this, the computer then sends a <strong>GET</strong> request to the server to load the web page. At last, the server returns the web page to the computer.</p>
+<blockquote>
+<p>A protocol defines the format and the order of messages exchanged between two or more communicating entities, as well as the actions taken on the transmission and/or receipt of a message or other event.</p>
+</blockquote>
+<p><img alt="Protocol Example" src="Pasted%20image%2020240719184457.png" /></p>
+<h2 id="network-edge">network edge</h2>
+<p>Internets end systems includde desktop computers, servers &amp; mobile devices. End systems are also referred to as hosts. Usually they are further divided into client and server. client -&gt; user desktops &amp; etc, server -&gt; data centers.</p>
+<h3 id="access-networks">access networks</h3>
+<p>The network that physically connects an end system to the first router on a path from one end system to another distant end system.</p>
+<p>Types of broadband residential acces
+1. Digital subscriber line
+2. cables</p>
+<p>DSL,
+- users DSL is also used as the ISP.
+- DSL modems use the existing connection lines (twisted pair copper wire) to exchange data with the digital subscriber line access multiplexer (DSLAM) to send it to the local control office.
+- The DSL takes data -&gt; high frequency tones -&gt; CO.
+- The high frequency tones are then converted back to the data.
+- The line is encoded in three different frequences
+    1. High speed downstream
+    2. Medium speed upstream
+    3. Ordinary two way telephone
+- On customer side, <strong>Splitter</strong> splits the telephone signals and the data and forwards it to the DSL modem.
+- DSL standards have different upstream and downstream rates.
+- The rate also depends the distance between the homes and CO.</p>
+<ul>
+<li>Cable internet access makes use of existing cable telivision lines</li>
+<li>these cables connect to neighbourhood junctions to about 500-5,000 homes.</li>
+<li>since these cables provide fibre and coaxial cables, it's aka <strong>Hybrid fibre coax (HFC)</strong>.</li>
+<li>cia requires <strong>modems</strong>. </li>
+<li><strong>cable modem termination system (cmts)</strong> (similar to dslam) converts analog signal into digital.</li>
+<li>cable modems divide hfc into upstream and downstream with similar transfer rates. </li>
+<li>cia is <strong>shared broadcast medium</strong></li>
+<li>
+<p>![[Pasted image 20240921082004.png]]</p>
+</li>
+<li>
+<p>fiber to the home <strong>ftth</strong>, a new emerging technology</p>
+</li>
+<li>optical fiber direct from CO.</li>
+<li>types -&gt; direct fiber</li>
+<li>one fiber split into multiple for multiple houses.</li>
+<li>technique -&gt; active optical network &amp; passive optical networks</li>
+<li>FTTH using PON architecture involves an <strong>optical network terminator</strong> at each household which is connected to a <em>splitter</em>. this splitter connects multiple connections to one fiber line which meets at the <strong>optical line terminator</strong></li>
+<li>![[Pasted image 20240921083129.png]]</li>
+</ul>
+<h4 id="ethernet-and-wifi">ethernet and wifi</h4>
+<ul>
+<li><strong>Ethernet LAN</strong> is the most common access technology in corporate, university, and home networks.</li>
+<li><strong>Ethernet users</strong> use twisted-pair copper wires to connect to an <strong>Ethernet switch</strong>, which is connected to the larger Internet.</li>
+<li>Ethernet access provides <strong>100 Mbps or 1 Gbps</strong> for users and <strong>1 Gbps to 10 Gbps</strong> for servers.</li>
+<li><strong>Wireless LAN (WiFi)</strong> based on <strong>IEEE 802.11</strong> technology is widely used in places like universities, offices, cafes, homes, and even airplanes.</li>
+<li>WiFi access is typically available within a few <strong>tens of meters</strong> from the access point.</li>
+<li><strong>802.11 (WiFi)</strong> provides shared transmission rates of more than <strong>100 Mbps</strong>.</li>
+<li><strong>Ethernet and WiFi</strong> were originally deployed in enterprise settings but are now common in <strong>home networks</strong>.</li>
+<li>Many homes combine <strong>broadband access</strong> (via cable modems or DSL) with <strong>WiFi</strong> to create home networks.</li>
+<li>A typical <strong>home network</strong> consists of:</li>
+<li>A <strong>wireless access point (base station)</strong> for WiFi.</li>
+<li>A <strong>router</strong> connecting the base station and wired devices to a <strong>cable modem</strong> for Internet access.</li>
+<li>Devices such as laptops, wired PCs, and other wireless devices connected through the network.</li>
+</ul>
+<h4 id="3g-and-lte">3g and lte</h4>
+<ul>
+<li><strong>Mobile devices</strong> like iPhones and Android phones are commonly used for messaging, photo sharing, watching movies, and streaming music on the go.</li>
+<li>These devices use <strong>cellular networks</strong> to send/receive packets through a <strong>base station</strong> operated by cellular network providers.</li>
+<li><strong>Cellular networks</strong> offer a wider range than WiFi, with users needing to be within <strong>a few tens of kilometers</strong> of the base station (compared to WiFi's range of tens of meters).</li>
+<li><strong>3G wireless technology</strong> provides <strong>packet-switched wide-area Internet access</strong> at speeds greater than <strong>1 Mbps</strong>.</li>
+<li><strong>4G technology</strong>, such as <strong>LTE (Long-Term Evolution)</strong>, offers even higher-speed wide-area access, with reported rates exceeding <strong>10 Mbps</strong>, and downstream speeds in commercial deployments reaching <strong>tens of Mbps</strong>.</li>
+<li><strong>LTE</strong> has evolved from <strong>3G technology</strong> and is part of the <strong>4G wireless network</strong> generation.</li>
+</ul>
+<h3 id="physical-media">physical media</h3>
+<ul>
+<li><strong>Network access technologies</strong> use various <strong>physical media</strong> for data transmission, such as HFC using <strong>fiber and coaxial cable</strong>, DSL and Ethernet using <strong>copper wire</strong>, and <strong>mobile networks</strong> using the <strong>radio spectrum</strong>.</li>
+<li>A <strong>physical medium</strong> refers to the method through which bits are transmitted via <strong>electromagnetic waves</strong> or <strong>optical pulses</strong> between transmitter-receiver pairs along a communication path.</li>
+<li>A <strong>bit</strong> travels through a network by passing between a series of <strong>transmitter-receiver pairs</strong>, using different types of physical media along the way.</li>
+<li>Common physical media include:</li>
+<li><strong>Twisted-pair copper wire</strong></li>
+<li><strong>Coaxial cable</strong></li>
+<li><strong>Multimode fiber-optic cable</strong></li>
+<li><strong>Terrestrial radio spectrum</strong></li>
+<li><strong>Satellite radio spectrum</strong></li>
+<li>Physical media are divided into:</li>
+<li><strong>Guided media</strong>, where signals travel through a solid medium like <strong>fiber-optic cables</strong>, <strong>twisted-pair copper wire</strong>, or <strong>coaxial cable</strong>.</li>
+<li><strong>Unguided media</strong>, where signals propagate through the <strong>atmosphere</strong> or <strong>outer space</strong>, such as in <strong>wireless LANs</strong> or <strong>satellite channels</strong>.</li>
+<li>The <strong>cost</strong> of the physical medium (wires, cables) is often much <strong>lower</strong> compared to the <strong>labor cost</strong> for installation.</li>
+<li>To reduce future costs, builders often install <strong>multiple media types</strong> (twisted-pair, fiber, coaxial) in buildings even if only one medium is used initially.</li>
+</ul>
+<h2 id="network-core">network core</h2>
+<h3 id="packet-switching">packet switching</h3>
+<ul>
+<li>end systems exchange messages with each other</li>
+<li>to send messages, the  message is broken donw into smaller cunks of data called packets. </li>
+<li>the packets are sent through comunication links &amp; packets switches.</li>
+<li>packets are transmitted over the links at a rate equal to the full transmission rate of the link</li>
+<li>i.e. L/R where L = a packet of L bits and R = transmission rate bits/sec</li>
+</ul>
+<h4 id="store-and-forward">store and forward</h4>
+<ul>
+<li><strong>Store-and-forward transmission</strong>: Routers store a packet’s bits before forwarding it, meaning they must receive the entire packet before transmitting it to the next link.</li>
+<li><strong>Example setup</strong>: A simple network has two end systems connected by a router. The source has three packets of <strong>L bits</strong> to send to the destination.</li>
+<li><strong>Total delay for a single packet</strong>: The source starts transmitting at time 0, and by time <strong>L/R seconds</strong>, the router has received the full packet and can start transmitting. At <strong>2L/R seconds</strong>, the destination has received the entire packet. Total delay for one packet is <strong>2L/R</strong>.</li>
+<li><strong>Alternative approach</strong>: If routers forwarded bits immediately as they arrived (without storing the entire packet), the delay would be reduced to <strong>L/R</strong>, since bits wouldn't need to wait at the router.</li>
+<li><strong>Multiple packets scenario</strong>: When sending multiple packets:</li>
+<li>At <strong>L/R seconds</strong>, the router forwards the first packet and the source starts sending the second packet.</li>
+<li>At <strong>2L/R seconds</strong>, the destination receives the first packet and the router receives the second.</li>
+<li>At <strong>3L/R seconds</strong>, the destination receives the first two packets and the router receives the third.</li>
+<li>At <strong>4L/R seconds</strong>, the destination receives all three packets.</li>
+<li><strong>General case</strong>: For a path with <strong>N links</strong>, the total end-to-end delay for a single packet is determined using the same logic and increases with the number of routers (N-1 routers between source and destination).</li>
+<li>![[Pasted image 20240921090708.png]]</li>
+</ul>
+<h4 id="queuing-delays-packet-loss">queuing delays &amp; packet loss</h4>
+<ul>
+<li><strong>Output buffer (output queue)</strong>: Each packet switch has an output buffer for each attached link. This stores packets waiting to be transmitted into that link.</li>
+<li><strong>Buffer role in packet switching</strong>: If a packet arrives and the link is busy, the packet waits in the output buffer, leading to potential queuing delays.</li>
+<li><strong>Queuing delays</strong>: These delays are variable and depend on network congestion. If the buffer is full, packet loss may occur, either dropping the arriving packet or an already-queued one.</li>
+<li><strong>Packet loss</strong>: Occurs when the buffer is full due to congestion. Either the new packet or one of the queued packets is dropped.</li>
+<li><strong>Figure 1.12 example</strong>: Hosts A and B send packets to Host E over 100 Mbps Ethernet links, which then funnel into a 15 Mbps link. Congestion occurs if the arrival rate exceeds 15 Mbps.</li>
+<li><strong>Queuing example</strong>: If Hosts A and B each send a burst of packets simultaneously, most of the packets will wait in the output buffer queue, analogous to real-life queuing situations like at a bank teller or tollbooth.</li>
+<li><strong>Queuing delay</strong>: Further analyzed in Section 1.4.</li>
+<li>figure 1.12![[Pasted image 20240921091050.png]]</li>
+</ul>
+<h4 id="forwarding-tables-and-routing-protocols">Forwarding Tables and Routing Protocols</h4>
+<ul>
+<li><strong>Router forwarding</strong>: Routers forward packets arriving on one link to another based on the packet’s destination address, which is an IP address in the Internet.</li>
+<li><strong>IP address structure</strong>: The IP address is hierarchical, similar to postal addresses. The source end system includes the destination IP address in the packet’s header.</li>
+<li><strong>Forwarding process</strong>: When a packet arrives at a router, the router examines part of the destination address and uses its forwarding table to determine the appropriate outbound link.</li>
+<li><strong>Forwarding table</strong>: This table maps destination addresses (or portions of them) to outbound links. The router consults this table for each incoming packet.</li>
+<li><strong>Analogy</strong>: The process is compared to someone asking for driving directions at each stop along the way, extracting portions of the destination address (city, street, house number) at each step, with routers acting as "gas station attendants."</li>
+<li><strong>Routing protocols</strong>: Forwarding tables are automatically set using special routing protocols, which determine the shortest path between routers and configure the tables accordingly. This is explored in Chapter 5.</li>
+<li><strong>Traceroute tool</strong>: The passage encourages trying out the Traceroute tool at www.traceroute.org to see the end-to-end route of packets on the Internet.</li>
+</ul>
+<h3 id="circuit-switching">circuit switching</h3>
+<p>Circuit-Switched Networks:
+1. <strong>Connection Establishment</strong>: A dedicated end-to-end connection (circuit) is established before communication begins.
+2. <strong>Resource Reservation</strong>: The network reserves a constant transmission rate across its links for the duration of the connection.
+3. <strong>Guaranteed Rate</strong>: The sender can transfer data at a guaranteed constant rate, as bandwidth is allocated specifically for that connection.
+4. <strong>Example Structure</strong>: Circuit switches are interconnected by links, each having multiple circuits (e.g., four circuits per link).
+5. <strong>Capacity Allocation</strong>: Each circuit gets a fraction of the link's total transmission capacity (e.g., if a link is 1 Mbps, each circuit may get 250 kbps).</p>
+<p>Packet-Switched Networks:
+1. <strong>No Connection Establishment</strong>: Packets are sent without establishing a dedicated connection or reserving resources.
+2. <strong>Dynamic Resource Usage</strong>: Link resources are used on a first-come, first-served basis, with no guarantees for bandwidth.
+3. <strong>Congestion Handling</strong>: If links are congested, packets may have to wait in a buffer, leading to variable delays.
+4. <strong>Best Effort Delivery</strong>: The network makes a best effort to deliver packets in a timely manner but does not guarantee delivery speed or reliability.</p>
+<ul>
+<li>A circuit in a link is implemented with either <strong>frequency-division multiplexing (FDM) or time-division multiplexing (TDM)</strong></li>
+<li>FDM<ul>
+<li>the link dedicates a frequency band to each connection for the duration of the connection.</li>
+<li>The width of the band is called, not surprisingly, the bandwidth. </li>
+</ul>
+</li>
+<li>TDM<ul>
+<li>time is divided into frames of fixed duration, and each frame is divided into a fixed number of time slots.</li>
+<li>one time slot for every frame in the connection</li>
+<li>slots are dedicated for the sole use of that connection</li>
+</ul>
+</li>
+<li>problem<ul>
+<li>circuit switching is waste-ful because the dedicated circuits are idle during silent periods.</li>
+<li>the idle network resources (frequency bands or time slots in the links along the connection’s route) cannot be used by other ongoing connections</li>
+</ul>
+</li>
+</ul>
+<h4 id="network-of-networks">network of networks</h4>
+<p>Access ISPs:
+1. <strong>Connectivity Options</strong>: Access ISPs connect end systems (e.g., PCs, smartphones) using various technologies like DSL, cable, FTTH, Wi-Fi, and cellular.
+2. <strong>Types of Access ISPs</strong>: Access ISPs can include universities and companies, not just telcos or cable companies.</p>
+<p>Network Structure Evolution:
+1. <strong>Network of Networks</strong>: The Internet is described as a "network of networks," requiring interconnection among access ISPs.
+2. <strong>Direct Connections</strong>: A naive approach would involve each access ISP connecting directly to every other ISP, which is impractical due to cost.</p>
+<p>Hierarchical Structures:
+1. <strong>Network Structure 1</strong>: Introduces a global transit ISP that interconnects all access ISPs but is costly and only one provider exists.
+2. <strong>Network Structure 2</strong>: Multiple global transit ISPs emerge, allowing access ISPs to choose among providers based on pricing and services.
+3. <strong>Network Structure 3</strong>: Incorporates regional ISPs that connect access ISPs to tier-1 ISPs, forming a multi-tier hierarchy.</p>
+<p>Points of Presence (PoPs) and Multi-Homing:
+1. <strong>PoPs</strong>: Groups of routers where customer ISPs connect to provider ISPs, enhancing connectivity.
+2. <strong>Multi-Homing</strong>: ISPs can connect to multiple providers to maintain service during provider failures.</p>
+<p>Peering and Internet Exchange Points (IXPs):
+1. <strong>Peering</strong>: ISPs can establish direct connections to exchange traffic without fees (settlement-free), which reduces costs.
+2. <strong>IXPs</strong>: Third-party facilities where multiple ISPs can peer, further facilitating efficient data exchange.</p>
+<p>Content-Provider Networks:
+1. <strong>Network Structure 5</strong>: Introduces content-provider networks (e.g., Google) that operate their own networks to enhance service delivery and reduce costs.
+2. <strong>Private Networks</strong>: Content providers connect to lower-tier ISPs directly or via IXPs while also interacting with tier-1 ISPs.</p>
+<hr />
+<ol>
+<li>
+<p>The Internet is structured as a "network of networks."</p>
+</li>
+<li>
+<p>The text describes five increasingly complex network structures to explain Internet evolution:</p>
+</li>
+<li>Network Structure 1: A single global transit ISP connecting all access ISPs.</li>
+<li>Network Structure 2: Multiple competing global transit ISPs.</li>
+<li>Network Structure 3: A multi-tier hierarchy with tier-1 ISPs, regional ISPs, and access ISPs.</li>
+<li>Network Structure 4: Adds points of presence (PoPs), multi-homing, peering, and Internet exchange points (IXPs).</li>
+<li>
+<p>Network Structure 5: Incorporates content-provider networks (e.g., Google).</p>
+</li>
+<li>
+<p>Key concepts introduced:</p>
+</li>
+<li>Customer-provider relationships between ISPs</li>
+<li>Tier-1 ISPs (about a dozen exist)</li>
+<li>Regional and access ISPs</li>
+<li>Points of Presence (PoPs)</li>
+<li>Multi-homing (connecting to multiple provider ISPs)</li>
+<li>Peering (direct connections between ISPs, often settlement-free)</li>
+<li>
+<p>Internet Exchange Points (IXPs)</p>
+</li>
+<li>
+<p>Content provider networks (like Google) have their own global private networks, often bypassing upper-tier ISPs.</p>
+</li>
+<li>
+<p>The modern Internet (Network Structure 5) is complex, with diverse ISPs spanning different geographic areas and hierarchical levels.</p>
+</li>
+<li>
+<p>End systems connect to the Internet through access ISPs, which can use various technologies (DSL, cable, FTTH, Wi-Fi, cellular).</p>
+</li>
+<li>
+<p>Access ISPs can be traditional telcos, cable companies, universities, or other organizations.</p>
+</li>
+</ol>
+<p>![[Pasted image 20240921094013.png]]</p>
+<hr />
+<h2 id="delay-loss-and-throughput">delay, loss and throughput</h2>
+<p>Packet Journey:
+- <strong>Path</strong>: A packet travels from a source host through routers to a destination host.</p>
+<p>Types of Delays:
+1. <strong>Nodal Processing Delay</strong>:
+    - Time taken for a router or host to process the packet header and make routing decisions.
+2. <strong>Queuing Delay</strong>:
+    - Time a packet spends waiting in a queue at a router or switch before being transmitted, affected by network congestion.
+3. <strong>Transmission Delay</strong>:
+    - Time required to push all the packet's bits onto the link, calculated as the <strong>packet's size divided by the link's transmission rate.</strong>
+4. <strong>Propagation Delay</strong>:
+    - Time it takes for the packet to travel through the physical medium (like fiber optic or copper cable) from one node to the next, depending on the distance and the medium's propagation speed.</p>
+<p>Total Nodal Delay:
+- The total delay experienced by a packet at each node is the sum of the above delays.</p>
+<p>Impact on Applications:
+- Network delays significantly affect the performance of various Internet applications, including search engines, web browsing, email, maps, instant messaging, and voice-over-IP.</p>
+<p>Importance:
+- Understanding these delays is crucial for grasping the dynamics of packet switching and overall computer networks.</p>
+<h4 id="processing-delay">Processing Delay:</h4>
+<ol>
+<li><strong>Definition</strong>: The time taken by a router to examine a packet's header and decide its next destination.</li>
+<li><strong>Components</strong>:<ul>
+<li><strong>Header Examination</strong>: Analyzing the packet's header for routing information.</li>
+<li><strong>Error Checking</strong>: Verifying the packet for bit-level errors that may have occurred during transmission.</li>
+</ul>
+</li>
+<li><strong>Duration</strong>: Processing delays in high-speed routers are typically very short, often on the order of microseconds or less.</li>
+<li><strong>Next Steps</strong>: After processing, the router queues the packet for transmission to the next hop (e.g., router B).</li>
+</ol>
+<p>Importance:
+- Understanding processing delays helps in analyzing overall network performance and router efficiency.</p>
+<h4 id="queuing-delay">Queuing Delay:</h4>
+<ol>
+<li><strong>Definition</strong>: The time a packet spends waiting in a queue before it can be transmitted onto the next link.</li>
+<li><strong>Factors Influencing Delay</strong>:<ul>
+<li><strong>Queue Length</strong>: The number of packets already waiting to be transmitted affects the delay. If the queue is empty and no other packets are being transmitted, the delay is zero.</li>
+<li><strong>Traffic Load</strong>: Heavy traffic with many packets in the queue results in longer queuing delays.</li>
+</ul>
+</li>
+<li><strong>Duration</strong>: Queuing delays can vary widely, typically ranging from microseconds to milliseconds, depending on network conditions.</li>
+</ol>
+<p>Importance:
+- Understanding queuing delays is crucial for evaluating network performance and managing traffic effectively.</p>
+<h4 id="transmission-delay">Transmission Delay:</h4>
+<ol>
+<li><strong>Definition</strong>: The time required to transmit all bits of a packet onto the link.</li>
+<li><strong>Calculation</strong>: Transmission delay is calculated as: Transmission Delay= <code>L/R</code><ul>
+<li><strong>L</strong>: Length of the packet in bits.</li>
+<li><strong>R</strong>: Transmission rate of the link in bits per second (e.g., R = 10 Mbps for a 10 Mbps Ethernet link).</li>
+</ul>
+</li>
+<li><strong>Transmission Order</strong>: In a first-come-first-served manner, a packet can only be transmitted after all preceding packets in the queue have been sent.</li>
+<li><strong>Duration</strong>: Transmission delays generally range from microseconds to milliseconds, depending on the packet size and link rate.</li>
+</ol>
+<p>Importance:
+- Understanding transmission delays is essential for evaluating overall network performance and optimizing data transfer.</p>
+<h4 id="propagation-delay">Propagation Delay:</h4>
+<ol>
+<li><strong>Definition</strong>: The time it takes for a bit to travel from the sender (router A) to the receiver (router B) after being transmitted onto the link.</li>
+<li><strong>Calculation</strong>: Propagation delay is calculated as: Propagation Delay= <code>d/s</code><ul>
+<li><strong>d</strong>: Distance between the two routers.</li>
+<li><strong>s</strong>: Propagation speed of the link (typically between 2×10^8 to 3×10^8 meters/second, close to the speed of light).</li>
+</ul>
+</li>
+<li><strong>Transmission Process</strong>: Once the last bit of the packet propagates to router B, all bits are stored and router B proceeds with forwarding the packet.</li>
+<li><strong>Duration</strong>: In wide-area networks, propagation delays typically range from milliseconds.</li>
+</ol>
+<p>Importance:
+- Understanding propagation delays is crucial for analyzing the overall time it takes for data to travel across a network, impacting applications sensitive to latency.</p>
+<h4 id="end-to-end-delay">end to end delay</h4>
+<p>![[Pasted image 20240921095124.png]]</p>
+<h2 id="protocol-layering">protocol layering</h2>
+<h3 id="network-protocols-and-layers">Network Protocols and Layers:</h3>
+<ol>
+<li>
+<p><strong>Layered Architecture</strong>: Network protocols are organized in layers, where each layer offers specific services to the layer above and relies on the services of the layer below. This structure helps organize network design and protocol functionality.</p>
+</li>
+<li>
+<p><strong>Service Model</strong>: Each layer provides services through:</p>
+</li>
+<li>Actions performed within that layer.</li>
+<li>
+<p>Utilizing services from the layer directly beneath it.</p>
+</li>
+<li>
+<p><strong>Examples</strong>:</p>
+</li>
+<li>
+<p>A transport layer might ensure reliable message delivery by detecting and retransmitting lost messages, relying on the underlying layer's basic message delivery service.</p>
+</li>
+<li>
+<p><strong>Implementation</strong>:</p>
+</li>
+<li>Protocols can be implemented in software (e.g., application-layer protocols like HTTP and SMTP) or hardware (e.g., physical layer and data link layer protocols in network interface cards).</li>
+<li>
+<p>The network layer often employs a combination of both.</p>
+</li>
+<li>
+<p><strong>Distributed Protocols</strong>: The functions of a protocol layer are distributed among end systems, packet switches, and other network components, meaning that each part of the network may implement aspects of the same protocol.</p>
+</li>
+</ol>
+<h3 id="advantages-of-layering">Advantages of Layering:</h3>
+<ul>
+<li><strong>Conceptual Clarity</strong>: Layering provides a structured way to discuss system components, facilitating understanding and communication about network functions.</li>
+<li><strong>Modularity</strong>: It allows for easier updates and maintenance of individual components without affecting the entire system.</li>
+</ul>
+<h3 id="potential-drawbacks">Potential Drawbacks:</h3>
+<ul>
+<li><strong>Redundancy</strong>: Layers might duplicate functionality, such as having error recovery in both the data link layer and transport layer.</li>
+<li><strong>Cross-Layer Dependencies</strong>: Functionality at one layer may require information from another layer, violating the intended separation.</li>
+</ul>
+<h3 id="internet-protocol-stack">Internet Protocol Stack:</h3>
+<ul>
+<li>The Internet protocol stack consists of five layers:</li>
+<li><strong>Physical Layer</strong>: Deals with the transmission of raw bits over a physical medium.</li>
+<li><strong>Link Layer</strong>: Handles communication over a specific link, providing data framing and error detection.</li>
+<li><strong>Network Layer</strong>: Responsible for routing packets across networks.</li>
+<li><strong>Transport Layer</strong>: Ensures reliable end-to-end communication and data integrity.</li>
+<li><strong>Application Layer</strong>: Interfaces with end-user applications and provides application-specific communication protocols.</li>
+</ul>
+<p>![[Pasted image 20240921095457.png]]</p>
+<p>Here's an overview of how data is transported through the various layers of the Internet protocol stack, detailing the actions taken at each layer:</p>
+<h3 id="overview-of-data-transport-through-layers">Overview of Data Transport Through Layers</h3>
+<ol>
+<li><strong>Application Layer</strong>:</li>
+<li><strong>Function</strong>: This is where network applications and their protocols (e.g., HTTP, SMTP, FTP, DNS) operate.</li>
+<li>
+<p><strong>Data Handling</strong>: When an application needs to send a message, it creates an application-layer message. This message is then passed to the transport layer for further processing.</p>
+</li>
+<li>
+<p><strong>Transport Layer</strong>:</p>
+</li>
+<li><strong>Function</strong>: Responsible for transporting application-layer messages between application endpoints.</li>
+<li><strong>Protocols</strong>: There are two main protocols here: TCP (connection-oriented) and UDP (connectionless).<ul>
+<li><strong>TCP</strong>: Provides reliable delivery, flow control, segmentation of long messages, and congestion control. The application message is broken into smaller segments.</li>
+<li><strong>UDP</strong>: Offers a simpler, no-frills service without reliability or flow control.</li>
+</ul>
+</li>
+<li>
+<p><strong>Data Handling</strong>: The transport layer adds headers to the application message, creating a segment (TCP/UDP packet), which includes the source and destination ports.</p>
+</li>
+<li>
+<p><strong>Network Layer</strong>:</p>
+</li>
+<li><strong>Function</strong>: Responsible for routing packets (called datagrams) from the source host to the destination host across multiple networks.</li>
+<li><strong>Protocols</strong>: Primarily uses the IP protocol, which defines the format of datagrams and handles addressing and routing.</li>
+<li>
+<p><strong>Data Handling</strong>: The network layer receives the transport layer segment, adds its own header (including source and destination IP addresses), and packages it into a datagram.</p>
+</li>
+<li>
+<p><strong>Link Layer</strong>:</p>
+</li>
+<li><strong>Function</strong>: Responsible for transferring datagrams between directly connected nodes (e.g., from one router to the next).</li>
+<li><strong>Protocols</strong>: Includes various protocols like Ethernet, WiFi, and others, which may provide reliable delivery over a single link.</li>
+<li>
+<p><strong>Data Handling</strong>: The link layer receives the datagram from the network layer, adds a link-layer header (and possibly a trailer for error detection), creating a frame.</p>
+</li>
+<li>
+<p><strong>Physical Layer</strong>:</p>
+</li>
+<li><strong>Function</strong>: Concerned with the physical transmission of bits over the communication medium (e.g., electrical signals, light pulses).</li>
+<li><strong>Data Handling</strong>: The physical layer takes the frames from the link layer and transmits the individual bits over the network medium to the next node.</li>
+</ol>
+<h3 id="data-flow-summary">Data Flow Summary</h3>
+<ul>
+<li><strong>From Application to Transport</strong>: The application generates a message and hands it to the transport layer, which segments it if necessary.</li>
+<li><strong>From Transport to Network</strong>: The transport layer adds a header to create a segment, passing it to the network layer.</li>
+<li><strong>From Network to Link</strong>: The network layer wraps the segment in a datagram, adding its own header, and sends it to the link layer.</li>
+<li><strong>From Link to Physical</strong>: The link layer encapsulates the datagram in a frame and sends it to the physical layer, which transmits the bits across the medium.</li>
+</ul>
+<h3 id="routing-through-layers">Routing Through Layers</h3>
+<ul>
+<li>At each node (host or router), this process repeats: the physical layer receives bits, the link layer decodes the frame and extracts the datagram, the network layer processes the datagram and determines the next hop, and so on, until the data reaches its final destination.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2023 <a href="https://github.com/drdholu"  target="_blank" rel="noopener">drdholu</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/drdholu" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/parasdhole/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+    
+  </body>
+</html>

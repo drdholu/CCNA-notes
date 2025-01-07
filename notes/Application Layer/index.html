@@ -1,0 +1,1824 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../Computer%20Networks%20and%20the%20Internet/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>Application Layer - Computer Networks</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#principles" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Computer Networks" class="md-header__button md-logo" aria-label="Computer Networks" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Computer Networks
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Application Layer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Index
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  Notes
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Computer Networks" class="md-nav__button md-logo" aria-label="Computer Networks" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Computer Networks
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Notes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Application Layer
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Application Layer
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Principles
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-application-architectures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Application Architectures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network Application Architectures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client server
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      P2P
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Processes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Processes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-server-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client Server Process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interface-between-process-and-computer-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interface between Process and computer network
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addressing-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Addressing Processes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transport-services-avl-to-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transport services (avl to applications)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transport-services-provided-by-internet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transport services (provided by internet)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application-layer-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application layer protocols
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web &amp; HTTP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Web & HTTP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#http-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP Overview
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistent-non-persistent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persistent &amp; Non Persistent
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-connections" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP connections
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTP connections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#http-w-non-persistent-connections" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP w/ non-persistent connections
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-w-persistent-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP w/ persistent connection
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-message-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP Message format
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTP Message format">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-message" class="md-nav__link">
+    <span class="md-ellipsis">
+      Request Message
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-message" class="md-nav__link">
+    <span class="md-ellipsis">
+      Response Message
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cookies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web-caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web Caching
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Web Caching">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#content-distribution-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Content Distribution Networks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditional-get" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conditional GET
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#email-and-the-internet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Email and the internet
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Email and the internet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#smtp" class="md-nav__link">
+    <span class="md-ellipsis">
+      SMTP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparison-w-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison w/ HTTP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dns-servers" class="md-nav__link">
+    <span class="md-ellipsis">
+      DNS Servers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DNS Servers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview-of-dns-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview of DNS working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distributed-hierarchy-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distributed Hierarchy System
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Distributed Hierarchy System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dns-caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      DNS caching
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dns-records-and-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      DNS records and Messages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DNS records and Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#records" class="md-nav__link">
+    <span class="md-ellipsis">
+      Records
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Messages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inserting-records-in-dns-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inserting records in DNS DB
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#socket-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Socket Programming
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Computer%20Networks%20and%20the%20Internet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What is the Internet
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Ethernet%20Cables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ethernet Cables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hybrid-Cloud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hybrid Cloud
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IP%20addresses/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IP addresses
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Linux%20networking%20commands/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux networking commands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Network%20Architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Network%20Layer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Layer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Network%20Models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Routers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Routers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Subnet%20Mask/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Subnet Mask
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Subnetting%20%28GPT%20notes%29/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Subnetting in IP Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Switches/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Switches
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Transport%20layer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transport layer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Upper%20Layers%20in%20Detail/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Upper Layers in Detail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../control%20plane/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Control plane
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Application Layer</h1>
+
+<h2 id="principles">Principles</h2>
+<ul>
+<li>Core principle of network dev is writing application that run on different end systems and communicate to each other over the network</li>
+<li>Example<ul>
+<li>Web application -&gt; browser program running on the host's end and the web server program running in the web server host.</li>
+</ul>
+</li>
+<li>You need to write a program that runs on both end systems</li>
+</ul>
+<h2 id="network-application-architectures">Network Application Architectures</h2>
+<h3 id="client-server">Client server</h3>
+<ul>
+<li>Always on host - <strong>server</strong> which services requests from other hosts - <strong>clients</strong></li>
+<li>Clients don't interact with each other, they interact directly to the server</li>
+<li>For larger scale applications w/ large clients, big &amp; maintained servers are used - <strong>data centers</strong>.</li>
+<li>Servers have a fixed address and are always on, so clients can contact the server by sending packets to the address at all times.</li>
+</ul>
+<h3 id="p2p">P2P</h3>
+<ul>
+<li>No contact with any dedicated servers</li>
+<li>Clients are interconnected with each other and directly interact with each other</li>
+<li>Clients are controlled by the users themselves</li>
+<li>P2P is self-scalable</li>
+<li>For example, in a P2P file-sharing application, although each peer generates workload by requesting files, each peer also adds service capacity to the system by distributing files to other peers.</li>
+</ul>
+<p>![[Pasted image 20240920232159.png]]</p>
+<h2 id="processes">Processes</h2>
+<h3 id="client-server-process">Client Server Process</h3>
+<ul>
+<li>In the context of a communication session between a pair of processes, the process that initiates the communication (that is, initially contacts the other process at the beginning of the session) is labeled as the <strong>client</strong>. The process that waits to be contacted to begin the session is the <strong>server</strong>.</li>
+</ul>
+<h3 id="interface-between-process-and-computer-network">Interface between Process and computer network</h3>
+<ul>
+<li>Any message sent from one process to another must go through the underlying network</li>
+<li>Messages are sent to and fro through a software interface called <strong>sockets</strong></li>
+<li>Socket is the interface between application layer and transport layer, commonly also called as <strong>Application Programming Interface</strong>.</li>
+<li>Application developer has full control over the application layer side of the socket but little control of the transport layer side of the socket.</li>
+</ul>
+<h3 id="addressing-processes">Addressing Processes</h3>
+<ul>
+<li>In order for a process to send message to another process on another host, the receiving process needs to have an address.</li>
+<li>To identify receiving process, two things are needed<ol>
+<li>Address of the host (IP address)</li>
+<li>Identifier that specified the receiving process in the destination host. (destination port number).</li>
+</ol>
+</li>
+</ul>
+<p><img alt="Pasted image 20240821102009.png" src="../images/Pasted%20image%2020240821102009.png" /></p>
+<h2 id="transport-services-avl-to-applications">Transport services (avl to applications)</h2>
+<ul>
+<li>Reliable data transfer<ul>
+<li>To support application there must be a protocol that can ensure data sent from one client is sent and received completely by the client on the other end.</li>
+<li>When a transport-layer protocol doesn’t provide reliable data transfer, some of the data sent by the sending process may never arrive at the receiving process. This may be acceptable for <strong>loss-tolerant applications</strong></li>
+</ul>
+</li>
+<li>Throughput<ul>
+<li>rate at which senders sends the bits to the receivers side</li>
+<li>networks have multiple devices in a bandwidth, making the throughput fluctuate.</li>
+<li>a service provided by the transport layer is to guarantee throughput of <strong>r bits/sec</strong> upon request of the host.</li>
+<li>if the throughput requirement is not met, the hosts may retry or giveup. applications with througput requirements are <strong>bandwidth sensitive applications</strong> (ex: multimedia apps)</li>
+<li>on the other hand, <strong>elastic applications</strong>, can adjust the to the amount of available bandwidith. (ex: email, file transfer, web transfers).</li>
+</ul>
+</li>
+<li>Timing</li>
+<li>Security</li>
+</ul>
+<h2 id="transport-services-provided-by-internet">Transport services (provided by internet)</h2>
+<ul>
+<li>TCP<ul>
+<li>Congestion control mechanism</li>
+<li>Connection Oriented</li>
+<li>Reliable data transfer</li>
+</ul>
+</li>
+<li>Enhanced TCP with SSL<ul>
+<li>end-to-end encryption</li>
+<li>enhancements are made in application layer</li>
+<li>ssl has its own socket API</li>
+</ul>
+</li>
+<li>UDP<ul>
+<li>Connectionless oriented</li>
+<li>No congestion protocol</li>
+<li>lightweight and minimal</li>
+</ul>
+</li>
+</ul>
+<h2 id="application-layer-protocols">Application layer protocols</h2>
+<p>Application layer protocols define how an applications processes run on different end systems.</p>
+<h2 id="web-http">Web &amp; HTTP</h2>
+<h3 id="http-overview">HTTP Overview</h3>
+<ul>
+<li><strong>HTTP (HyperText Transfer Protocol)</strong> is a protocol used for transferring data over the web. It defines how messages are formatted and transmitted.</li>
+<li>Two implementations of HTTP, <strong>server and client</strong></li>
+<li><strong>Web server</strong> -&gt; server and <strong>web browsers</strong> -&gt; client </li>
+<li>First TCP connection b/w client and server is established and then communication is done through their socket interface</li>
+<li>HTTP doesn't need to worry about the data being lost or anything, TCP handles it</li>
+<li>HTTP is a stateless protocol</li>
+</ul>
+<h3 id="persistent-non-persistent">Persistent &amp; Non Persistent</h3>
+<ul>
+<li>Persistent - All req and res sent in one TCP connection</li>
+<li>Non Persistent - New connection made for every req and res</li>
+</ul>
+<h3 id="http-connections">HTTP connections</h3>
+<blockquote>
+<p><strong>Round trip time</strong> - Time taken for packet to travel from client to server and back to client. RTT includes packet-propagation delays, packet queuing delays in intermediate routers and switches, and packet-processing delays.</p>
+</blockquote>
+<h4 id="http-w-non-persistent-connections">HTTP w/ non-persistent connections</h4>
+<ul>
+<li>1 RTT - Send TCP initiation request sent, server ack sent</li>
+<li>1 RTT - HTTP req w/ client ack sent, html file sent</li>
+<li>New connection for each requested object.</li>
+<li>TCP buffers and variables must be kept in both client and server (to maintain TCP state), this can be a burden to both sides.</li>
+<li>![[Pasted image 20240915190330.png]]</li>
+</ul>
+<h4 id="http-w-persistent-connection">HTTP w/ persistent connection</h4>
+<ul>
+<li>1 RTT - Req sent, HTML sent back.</li>
+<li>TCP connection is made and left on until there isn't any communication/req for a while (this can be configured)</li>
+<li>multiple Web pages residing on the same server can be sent from the server to the same client over a single persistent TCP connection. These requests for objects can be made back-to-back, without waiting for replies to pending requests (pipelining)</li>
+<li>Recent HTTP 1.1 allows multiple server requests to be interleaved in the same connection. It has a priority mechanism which selects which request to respond to.</li>
+<li>![[Pasted image 20240915190249.png]]</li>
+<li>![[Pasted image 20240915190401.png]] </li>
+</ul>
+<blockquote>
+<p>RTT = 2 * propagation time
+Total = 2RTT + transmit time</p>
+</blockquote>
+<h3 id="http-message-format">HTTP Message format</h3>
+<p>There's two types of messages, requests and responses</p>
+<p>![[Pasted image 20240921003952.png]]</p>
+<h4 id="request-message">Request Message</h4>
+<pre><code class="language-bash">GET /somedir/index.html HTTP/1.1  #request line
+# following lines are header lines
+Host: www.somedir.com # specifies where the object recides
+Connection: close # close the tcp connection after sending this request
+User-agent: Mozilla/5.0
+Accept-language: fr
+</code></pre>
+<p><code>HEAD</code> method is almost similar to <code>GET</code> but it only responds with an HTTP msg but leaves out the requested object.</p>
+<h4 id="response-message">Response Message</h4>
+<pre><code class="language-bash">HTTP/1.1 200 OK
+Connection: close
+Data: ...
+Server: ...
+Last-Modified: ...
+Content-Length: ...
+Content-Type: ...
+</code></pre>
+<h3 id="cookies">Cookies</h3>
+<p>HTTP servers are stateless, cookies help provide some sort of state to HTTP servers. Cookies help us keep track of user information.</p>
+<p>Four comp. of the cookie tech
+1. Cookie header line in HTTP req msg
+2. Cookie header line in HTTP res msg
+3. Cookie file stored in users end system and managed by the browser
+4. Backend database at the website.</p>
+<p>Coookies create a user session layer on top of the stateless HTTP. When visiting a site for the first time, the server will respond with a msg to browser with a msg,</p>
+<p><code>Set Cookie: 1679</code></p>
+<p>When revisiting, the browser sends requests with the cookie file,</p>
+<p><code>Cookie: 1679</code></p>
+<p>![[Pasted image 20240824102952.png]]</p>
+<h3 id="web-caching">Web Caching</h3>
+<ul>
+<li>aka <strong>Proxy server</strong></li>
+<li>satisfies the webs http req on behalf of the web server</li>
+<li>has its own disk storage space &amp; keeps copies of recently requested objects</li>
+<li>both client &amp; server at the same time</li>
+<li>Usually purchased and installed by the ISP's</li>
+<li>ISP's purchase and install these servers in their network and configure their browsers to be directed to the proxy servers.</li>
+</ul>
+<p>Pros of web caching
+1. Reduces traffic on main web server
+2. Reduce response time
+3. Improve performance of applications</p>
+<p>![[Pasted image 20240824145556.png]]</p>
+<h4 id="content-distribution-networks">Content Distribution Networks</h4>
+<p>Is another form of web caching where the ISP needs to only purchase a specific domain and need not worry about setting up an actual server.</p>
+<p>A CDN company installs many caches throughout the internet. there are <strong>shared CDNS</strong> &amp; <strong>dedicated CDNS</strong>.</p>
+<h3 id="conditional-get">Conditional GET</h3>
+<p>This is another form of an HTTP request which is required to check whether the existing object in the web cache is of the latest version or not.</p>
+<p>Once the web cache is stored, and it's accessed some time later, the web cache server will send a request to the web server as such</p>
+<pre><code class="language-bash">GET /fruit/kiwi.gif HTTP/1.1 
+Host: www.exotiquecuisine.com 
+If-modified-since: Wed, 9 Sep 2015 09:23:24
+</code></pre>
+<p>The <code>If-modified-since</code> is compared with the <code>Last-modified</code> header to come across any updates to the object.</p>
+<p>If it's not modified, the server will send this back to the proxy server</p>
+<pre><code class="language-bash">HTTP/1.1 304 Not Modified 
+Date: Sat, 10 Oct 2015 15:39:29 
+Server: Apache/1.3.0 (Unix)
+</code></pre>
+<p>And if the object is modified,</p>
+<pre><code class="language-bash">HTTP/1.1 200 OK 
+Date: Sat, 10 Oct 2015 15:39:29 
+Server: Apache/1.3.0 (Unix) 
+Last-Modified: Sat, 10 Oct 2015 10:15:00 
+Content-Type: image/gif 
+Content-Length: 1024
+</code></pre>
+<h2 id="email-and-the-internet">Email and the internet</h2>
+<p>Terminologies
+- User agents - Sends the mail to the mail server
+- Mail Servers - Stores the mail in its Queue and sends the mail to the other mail servers when needed.
+- Simple Mail Transfer Protocol (SMTP) - Application Layer protocol which is supported by TCP for reliable data transfer</p>
+<p>Flow of mail</p>
+<pre><code>(SMTP Client) Senders user agent -&gt; Senders Mail server -&gt; (SMTP Server) Recipient's Mail Server -&gt; Recipients Mail Box
+</code></pre>
+<p>![[Pasted image 20240825120924.png]]</p>
+<h3 id="smtp">SMTP</h3>
+<p>Facts
+- Much older than HTTP
+- Data is sent to &amp; fro in 7 bit ASCII format. While sending it's encoded by client and while receiving its decoded by server.
+- SMTP first initializes TCP connection with other mail server.
+- No intermediate mail servers are used for long distances.</p>
+<p>Process
+- Client SMTP has TCP establish a connection (<strong>port 25</strong>) with the Server SMTP
+- Client and server perform three-way handshaking where the client also mentions the senders and recipients email address.
+- The reliable data transfer is left off to TCP.
+- Process is repeated if there are more messages over the same connection or the connection is closed.</p>
+<p>![[Pasted image 20240825120936.png]]</p>
+<p>Example communication</p>
+<pre><code class="language-bash">S:  220 hamburger.edu 
+C:  HELO crepes.fr # HELO, MAIL, RCPT TO, DATA, QUIT are part of the dialogue
+S:  250 Hello crepes.fr, pleased to meet you 
+C:  MAIL FROM: &lt;alice@crepes.fr&gt;
+S:  250 alice@crepes.fr ... Sender ok 
+C:  RCPT TO: &lt;bob@hamburger.edu&gt;
+S:  250 bob@hamburger.edu ... Recipient ok 
+C:  DATA 
+S:  354 Enter mail, end with ”.” on a line by itself 
+C:  Do you like ketchup? 
+C:  How about pickles? 
+C:  . # end of message, in ASCII -&gt; CRLF (carriage return &amp; line feed)
+S:  250 Message accepted for delivery 
+C:  QUIT 
+S:  221 hamburger.edu closing connection
+</code></pre>
+<h3 id="comparison-w-http">Comparison w/ HTTP</h3>
+<table>
+<thead>
+<tr>
+<th>HTTP</th>
+<th>SMTP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pull protocol</strong>, where the users use TCP connection to <strong>pull</strong> the info from the server</td>
+<td><strong>Push Protocol</strong>, where the sender initiates a TCP connection to send data</td>
+</tr>
+<tr>
+<td>Doesn't need any modification to the data being transferred</td>
+<td>Data transferred must be encoded/decoded in 7-Bit ASCII format</td>
+</tr>
+<tr>
+<td>Encapsulates each object in its own HTTP msg</td>
+<td>Places all message's objects in one object</td>
+</tr>
+<tr>
+<td>### Mail Access formats</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Flow
+- Senders user agent sends the msg to its mail server. (using smtp)
+- Senders mail server sends msg to recipients mail server. (using smtp)
+- Since SMTP is a <strong>push</strong> protocol, the recipients user agent doesn't have any way to get the msg from its mail server.
+- Mail access protocol helps user agents <strong>pull</strong> the msg from their mail server.</p>
+<p>Mail access protocols
+- IMAP
+- POP3
+- HTTP</p>
+<ol>
+<li>POP3<ul>
+<li>POP3 begins when the client makes a TCP connection to the mail server on <strong>port 110</strong>.</li>
+<li>Three phases in POP3<ol>
+<li>Authorization - user is authorized </li>
+<li>Transaction - user agent retrieves messages, mark msg for deletion, remove deletion marks and obtain mail statistics</li>
+<li>Update - occurs after <code>quit</code> command is run</li>
+</ol>
+</li>
+<li>Server responds with <code>+OK</code> &amp; <code>-ERR</code></li>
+<li><strong>Authorization</strong> has two principle commands, <code>user&lt;username&gt;</code> &amp; <code>pass&lt;password&gt;</code> </li>
+<li><strong>Transaction phase</strong> has two methods which can be configured by the user, "download and delete" &amp; "download and keep".<ul>
+<li><em>download and delete</em> mode allows the user to use the <code>list, retr, dele</code> commands</li>
+<li>in <em>download and keep</em> mode the user agent leaves the messages on the mail server after downloading them.</li>
+</ul>
+</li>
+<li>After the user issues wtv commands they want, the user runs <code>quit</code> and POP3 server enters the <strong>update phase</strong></li>
+<li>This mode isn't really useful if the user is a nomad who wants to check their mails on different servers over different laptops.</li>
+<li>POP3 does not carry state information over sessions, it only keeps state information (i.e which mails have been marked for deletion) within a session.</li>
+</ul>
+</li>
+<li>IMAP<ul>
+<li>With POP3 one can download the mails on their local machine and maintain different folder for the mails. But this paradigm doesn't allow the user to use these mails on different machines.</li>
+<li>IMAP is a mail access protocol that allows the user to move mails into different folder, create new folder and move msg's from one folder to other.</li>
+<li>IMAP maintains state information across sessions</li>
+<li>Allows user to access/download only a part of a message in low bandwidth connection areas.</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>In web-based emails, <strong>the servers and agents now connect over HTTP</strong>. The user agent pulls emails from the mail server using HTTP rather than POP3 and IMAP. When the user wants to send an email, the user agent sends it to the mail server using HTTP.
+However the <strong>mail servers still send and receive messages through SMTP</strong>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>POP3</th>
+<th>IMAP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Email Storage</strong></td>
+<td>Downloads emails to local device; deletes from server.</td>
+<td>Emails remain on the server; only synchronized.</td>
+</tr>
+<tr>
+<td><strong>Device Access</strong></td>
+<td>Accessed from one device at a time.</td>
+<td>Accessible from multiple devices simultaneously.</td>
+</tr>
+<tr>
+<td><strong>Email Organization</strong></td>
+<td>Limited organization; cannot create folders on the server.</td>
+<td>Allows creation and management of folders on the server.</td>
+</tr>
+<tr>
+<td><strong>Synchronization</strong></td>
+<td>No synchronization; changes not reflected across devices.</td>
+<td>Synchronizes changes across all devices (e.g., read/unread status).</td>
+</tr>
+<tr>
+<td><strong>Offline Access</strong></td>
+<td>Emails can be read offline after download.</td>
+<td>Requires internet connection to access emails fully.</td>
+</tr>
+<tr>
+<td><strong>Connection Ports</strong></td>
+<td>Port 110 (unencrypted), 995 (encrypted).</td>
+<td>Port 143 (unencrypted), 993 (encrypted).</td>
+</tr>
+<tr>
+<td><strong>Use Case</strong></td>
+<td>Suitable for single-device use, limited internet access.</td>
+<td>Ideal for users needing access from multiple devices.</td>
+</tr>
+<tr>
+<td><strong>Server Load</strong></td>
+<td>Lower server load due to local storage of emails.</td>
+<td>Higher server load due to email storage and synchronization.</td>
+</tr>
+<tr>
+<td><strong>Backup and Recovery</strong></td>
+<td>Emails lost if deleted after download unless kept on server.</td>
+<td>Multiple copies stored, allowing recovery if local data is lost.</td>
+</tr>
+<tr>
+<td><strong>Complexity</strong></td>
+<td>Simpler and easier to implement.</td>
+<td>More complex, requiring more resources and management.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="dns-servers">DNS Servers</h2>
+<ul>
+<li>Two ways to identify a host, <strong>hostname</strong> &amp; <strong>ip address</strong>. </li>
+<li>DNS servers help in resolving the hostnames into ip addresses so that routers/switches can operate.</li>
+<li>Operates on <strong>port 53</strong> and runs over <strong>UDP</strong></li>
+<li>Deployed by application layer protocols (HTTP &amp; SMTP) to resolve hostnames.</li>
+<li>Adds additional delay, but sometimes IP addresses are cached in nearby servers.</li>
+</ul>
+<p>DNS is a 
+1. Distributed database implemented in a hierarchy of DNS servers
+2. Allows hosts to query the distributed database.</p>
+<p>Features
+1. Host aliasing
+    - One hostname (canonical name) -&gt; multiple aliases
+    - DNS is invoked by application to obtain cname for a supplied alias
+2. Mail server aliasing
+    - Similar to host aliasing, DNS is invoked by mail application to obtain cname for a supplied alias.
+3. Load distribution
+    - Busy servers are often replicated over many servers to offload heavy traffic over to other servers. Each server runs on different end systems having different IP addresses.
+    - Client makes a query for a name which is mapped to several addresses, the server returns a set of addresses. 
+    - The server follows a mechanism where for each query it rotates the set as the client will typically pick the top address in the set.</p>
+<blockquote>
+<p>Web server and Mail server can have the same canonical name</p>
+</blockquote>
+<h3 id="overview-of-dns-working">Overview of DNS working</h3>
+<ul>
+<li>Application invokes the DNS server to resolve a host name.</li>
+<li>DNS takes over and sends a request to the network</li>
+<li>All requests &amp; messages are done over UDP on <strong>port 53</strong></li>
+<li>DNS server sends a reply to DNS in host side with the required mapping. </li>
+<li>Mapping is passed to the invoked application</li>
+</ul>
+<p>All the DNS mapping arent on one server.
+- Maintenance
+- Traffic/Load on one server
+- Single point of failure
+- Distant database of mappings</p>
+<h3 id="distributed-hierarchy-system">Distributed Hierarchy System</h3>
+<p>Since one server can't handle/have all the mappings present, there are multiple servers scattered around the world. The servers are designed in an <strong>hierarchical</strong> manner.</p>
+<ol>
+<li>Root DNS Servers<ul>
+<li>About 400 servers</li>
+<li>Provides with the IP addr of the tld server</li>
+</ul>
+</li>
+<li>Top Level Domain Servers<ul>
+<li>Each tld has it's own tld server</li>
+<li>Provides with the IP addr of the auth server</li>
+</ul>
+</li>
+<li>Authoritative Servers<ul>
+<li>Each organization with a public host name has to have its IP address publicly listed.</li>
+<li>Orgs can have their own servers or pay money to a service provider for the same.</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><strong>Local DNS Server</strong>: Doesn't belong to the hierarchical system but is <strong>central</strong> to the DNS structure. ISP's set up their own local DNS servers. The addresses of these local servers is sent to the host when a host connects to the ISP. When a host makes a DNS query, the query is sent to the local DNS server, which acts a proxy, forwarding the query into the DNS server hierarchy.</p>
+</blockquote>
+<h4 id="example">Example</h4>
+<p><code>cse.nyu.edu</code> wants IP addr of -&gt; <code>gaia.cs.umass.edu.</code></p>
+<p>What we know,
+- Local DNS for <code>cse.nyu.edu</code> -&gt; <code>dns.nyu.edu</code>
+- Auth DNS for <code>gaia.cs.umass.edu</code> -&gt; <code>dns.umass.edu</code></p>
+<p>Flow =&gt;</p>
+<pre><code class="language-bash">[Host: cse.nyu.edu]
+     |
+     | (1. Send DNS Query for &quot;gaia.cs.umass.edu&quot; to Local DNS Server)
+     v
+[Local DNS Server: dns.nyu.edu]
+     |
+     | (2. Forward Query to Root DNS Server)
+     v
+[Root DNS Server]
+     |
+     | (3. Respond with IP Addresses of TLD Servers for &quot;edu&quot;)
+     v
+[Local DNS Server: dns.nyu.edu]
+     |
+     | (4. Forward Query to TLD DNS Server for &quot;edu&quot;)
+     v
+[TLD DNS Server for &quot;edu&quot;]
+     |
+     | (5. Respond with IP Address of Authoritative DNS Server for &quot;umass.edu&quot;)
+     v
+[Local DNS Server: dns.nyu.edu]
+     |
+     | (6. Forward Query to Authoritative DNS Server: dns.umass.edu)
+     v
+[Authoritative DNS Server: dns.umass.edu]
+     |
+     | (7. Respond with IP Address of &quot;gaia.cs.umass.edu&quot;)
+     v
+[Local DNS Server: dns.nyu.edu]
+     |
+     | (8. Send IP Address of &quot;gaia.cs.umass.edu&quot; back to Host: cse.nyu.edu)
+     v
+[Host: cse.nyu.edu]
+     |
+     | (9. Use IP Address to connect to &quot;gaia.cs.umass.edu&quot;)
+     v
+[Establish Connection with &quot;gaia.cs.umass.edu&quot;]
+
+</code></pre>
+<p>The above requests are both <strong>iterative</strong> &amp; <strong>recursive</strong>.</p>
+<ul>
+<li>Iterative -&gt; All except 1</li>
+<li>Recursive -&gt; 1(since cse makes a request to dns for host &amp; dns resolves it all on its server)</li>
+</ul>
+<p>![[Pasted image 20240826201041.png]]</p>
+<p>Here’s a comparison of iterative and recursive DNS requests in table form:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Iterative DNS Requests</th>
+<th>Recursive DNS Requests</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Client Involvement</strong></td>
+<td>High; client queries multiple servers sequentially.</td>
+<td>Low; client delegates all queries to the DNS server.</td>
+</tr>
+<tr>
+<td><strong>Caching</strong></td>
+<td>Primarily at the resolver/server level; limited client-side caching.</td>
+<td>Local caching at the DNS resolver to speed up future requests.</td>
+</tr>
+<tr>
+<td><strong>Process Flow</strong></td>
+<td>Client receives referrals from servers and queries each one until a response is obtained.</td>
+<td>Resolver queries other servers on behalf of the client until a complete answer is found.</td>
+</tr>
+<tr>
+<td><strong>Resolving Server Behavior</strong></td>
+<td>Server provides referrals to other servers without fetching the complete answer.</td>
+<td>Server performs all necessary queries and returns the complete answer or an error.</td>
+</tr>
+<tr>
+<td><strong>Efficiency</strong></td>
+<td>Can be less efficient due to multiple queries by the client.</td>
+<td>More efficient for the client as it requires fewer actions on their part.</td>
+</tr>
+<tr>
+<td><strong>Use Case</strong></td>
+<td>Useful in scenarios where clients need to manage their own queries or when using lightweight resolvers.</td>
+<td>Commonly used in most DNS lookups, especially in user-facing applications where ease of use is essential.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dns-caching">DNS caching</h3>
+<p>DNS caching plays a big role in DNS resolving. It reduces delay performance and also reduces the traffic in the network.</p>
+<p>DNS caching is what allows DNS servers to learn/cache IP addresses. It caches the mapping in its local memory. Since these mappings are never permanent, the saved addresses are discarded after a while.</p>
+<h3 id="dns-records-and-messages">DNS records and Messages</h3>
+<h4 id="records">Records</h4>
+<p>Servers that implement DNS distributed servers also store <strong>resource records (rr)</strong>. Each DNS reply carries one or more dns records</p>
+<ul>
+<li>
+<p>Structure: <code>(Name, Value, Type, TTL)</code></p>
+<ul>
+<li>TTL: time to live of the rr.</li>
+</ul>
+</li>
+<li>
+<p>Type = A</p>
+<ul>
+<li>Name is the hostname</li>
+<li>Value is the ip address of the host name</li>
+<li>Standard hostname to IP addr mapping</li>
+</ul>
+</li>
+<li>Type = NS<ul>
+<li>Name is domain</li>
+<li>Value is the hostname of auth dns server</li>
+<li>Used to route dns queries further down the chain</li>
+</ul>
+</li>
+<li>Type = CNAME<ul>
+<li>Name is the alias domain</li>
+<li>Value is the IP addr of the canonical name</li>
+</ul>
+</li>
+<li>Type = MX<ul>
+<li>Name is the email alias domain</li>
+<li>Value is the IP addr of the canonical email name</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Servers can have the same alias for web servers and mail servers. To obtain either we use the specific type as mentioned above.</p>
+</blockquote>
+<h4 id="messages">Messages</h4>
+<p>The query and reply sent by a DNS server follow a similar pattern</p>
+<ol>
+<li>Header Section (12 bytes)<ul>
+<li>16 bit identifier identifies the query</li>
+<li>Flags such as, 1 bit query(0)/reply(1), 1 bit auth flag, 1 bit recursion-desired flag, 1 bit recursion-available flag</li>
+</ul>
+</li>
+<li>Question section (variable)<ul>
+<li><strong>Name</strong> field which contains the name of the thing that is being queried.</li>
+<li><strong>Type</strong> field which tells about the type of the question being asked about the name (A, MX, etc.).</li>
+</ul>
+</li>
+<li>Answer section (Variable)<ul>
+<li>Contains the resource records for the name that was queried</li>
+<li>May contain multiple rr's</li>
+</ul>
+</li>
+<li>Authority section (variable)<ul>
+<li>Contains records of authoritative servers</li>
+</ul>
+</li>
+<li>Additional section (variable)<ul>
+<li>Additional info such as CNAME's of email/hostname aliases.</li>
+</ul>
+</li>
+</ol>
+<p>![[Pasted image 20240826223758.png]]</p>
+<p>To illustrate the structure of a DNS query and response, consider a request to resolve the domain name <code>example.com</code>. Table below shows the interpretation of the bytes of the request. (Note that the exact structure of the UDP datagram consists of just the bytes shown, concatenated in order: <code>123401000001...</code>) The header starts with a <strong>16-bit randomly chosen identifier</strong> denoted as <em>XID</em> (<code>1234</code> in our example), followed by a 16-bit value that serves as <em>a bit mask</em>. The structure of the bit mask is shown in <a href="https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/UDPSockets.html#tbl4-8">Table 4.8</a>. The rest of the header after the bit-mask indicates how many entries are in each of the other fields, each as a 16-bit value.</p>
+<p>Table 4.7
+![[Pasted image 20240828085815.png]]</p>
+<p><a href="https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/UDPSockets.html#tbl4-8">Table 4.8</a> illustrates the structure of the <strong>16-bit flag field</strong> that <em>follows the XID field of a DNS header</em>. In the message shown in <a href="https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/UDPSockets.html#tbl4-7">Table 4.7</a>, the only bit set is the <code>Recursion Desired</code> (<code>RD</code>) bit. The <code>Opcode</code> field indicates that this is a standard query (<code>SQUERY = 0000</code>). In the response shown in <a href="https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/UDPSockets.html#tbl4-9">Table 4.9</a>, the flag value is <code>0x8180</code>, which means that the Query Response (<code>QR</code>) bit has been set to indicate the message is a response, as well as the <code>Recursion Available</code> (<code>RA</code>) bit. <strong>The <code>RCODE</code> field is used to indicate if an error occurs</strong>, and all 0 bits there indicates there was no error processing the query. Information on the other fields is available in RFC 1035.</p>
+<p>![[Pasted image 20240828085910.png]]</p>
+<p><a href="https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/UDPSockets.html#tbl4-9">Table 4.9</a> shows the response for the query from <a href="https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/UDPSockets.html#tbl4-7">Table 4.7</a>. In the response, the <code>header</code> is almost identical to that of the request. <em>The randomly chosen identifier <code>XID</code> should match the original request</em>; if the resolver has sent multiple requests, the <code>XID</code> field allows the resolver to determine which request is being answered. <em>The bit mask has been modified to denote that this message is a response</em> and the recursive resolution strategy is available. The <code>header</code> also indicates that <em>a single answer has been provided</em>. The <code>question</code> field is identical to the original request.</p>
+<p>![[Pasted image 20240828090348.png]]</p>
+<h4 id="inserting-records-in-dns-db">Inserting records in DNS DB</h4>
+<ol>
+<li>Register your domain through the <strong>registrar</strong> (requires a small fee to be paid). Registrar ensure uniqueness.</li>
+<li>Provide <strong>IP addresses</strong> of 1st, 2nd, (so on) <strong>auth DNS servers</strong>. For each server there would be a Type A and Type NS record in the TLD servers.</li>
+<li>Make sure to have Type MX and A rr's entered in your auth DNS server.</li>
+</ol>
+<blockquote>
+<p><a href="https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/UDPSockets.html">4.6. UDP Socket Programming: DNS — Computer Systems Fundamentals (jmu.edu)</a></p>
+</blockquote>
+<h2 id="socket-programming">Socket Programming</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2023 <a href="https://github.com/drdholu"  target="_blank" rel="noopener">drdholu</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/drdholu" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/parasdhole/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+    
+  </body>
+</html>

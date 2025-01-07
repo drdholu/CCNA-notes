@@ -1,0 +1,1687 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Network%20Architecture/">
+      
+      
+        <link rel="next" href="../Network%20Models/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>Network Layer - Computer Networks</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#41-overview" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Computer Networks" class="md-header__button md-logo" aria-label="Computer Networks" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Computer Networks
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Network Layer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Index
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Application%20Layer/" class="md-tabs__link">
+          
+  
+  Notes
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Computer Networks" class="md-nav__button md-logo" aria-label="Computer Networks" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Computer Networks
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Notes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Application%20Layer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Application Layer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Computer%20Networks%20and%20the%20Internet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What is the Internet
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Ethernet%20Cables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ethernet Cables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hybrid-Cloud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hybrid Cloud
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IP%20addresses/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IP addresses
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Linux%20networking%20commands/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux networking commands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Network%20Architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Network Layer
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Network Layer
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#41-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#411-forwarding-and-routing-data-and-control-planes" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1.1 forwarding and routing: data and control planes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1.1 forwarding and routing: data and control planes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#control-plane" class="md-nav__link">
+    <span class="md-ellipsis">
+      control plane
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-plane-sdn-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      control plane: sdn approach
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#412-network-service-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1.2 network service model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-inside-a-router" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 inside a router
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 inside a router">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#421-input-processing-destination-based-forwarding" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2.1 input processing &amp; destination based forwarding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#422-switching-fabric" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2.2 Switching fabric
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#423-output-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2.3 output processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#424-queueing" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2.4 queueing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2.4 queueing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#input-queueing" class="md-nav__link">
+    <span class="md-ellipsis">
+      input queueing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-queueing" class="md-nav__link">
+    <span class="md-ellipsis">
+      output queueing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#425-packet-scheduling" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2.5 packet scheduling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2.5 packet scheduling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fifo" class="md-nav__link">
+    <span class="md-ellipsis">
+      FIFO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#priority-queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      priority queue
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#round-robin" class="md-nav__link">
+    <span class="md-ellipsis">
+      round robin
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="round robin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#weighted-fair-queuing" class="md-nav__link">
+    <span class="md-ellipsis">
+      weighted fair queuing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43-ip-thing" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 ip thing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 ip thing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ipv4-datagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      ipv4 datagram
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-fragmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      data fragmentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipv4-addressing" class="md-nav__link">
+    <span class="md-ellipsis">
+      ipv4 addressing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ipv4 addressing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#subnets" class="md-nav__link">
+    <span class="md-ellipsis">
+      subnets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#obtaining-a-block-of-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      obtaining a block of address
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-isps-get-a-block-of-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      how ISPs get a block of address
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#obtaining-a-host-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      obtaining a host address
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nat" class="md-nav__link">
+    <span class="md-ellipsis">
+      NAT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ipv6
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ipv6">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ipv4-to-ipv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ipv4 to ipv6
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#44-generalized-forwarding-sdn" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 generalized forwarding &amp; sdn
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.4 generalized forwarding & sdn">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenFlow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OpenFlow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#match" class="md-nav__link">
+    <span class="md-ellipsis">
+      Match
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#action" class="md-nav__link">
+    <span class="md-ellipsis">
+      Action
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#middleboxes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Middleboxes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Network%20Models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Routers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Routers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Subnet%20Mask/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Subnet Mask
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Subnetting%20%28GPT%20notes%29/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Subnetting in IP Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Switches/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Switches
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Transport%20layer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transport layer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Upper%20Layers%20in%20Detail/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Upper Layers in Detail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../control%20plane/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Control plane
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Network Layer</h1>
+
+<p>Index</p>
+<ul>
+<li>[[Network Layer#4.1 overview |Overview]]<ul>
+<li>[[Network Layer#4.1.1 forwarding and routing data and control planes|forwarding and routing data and control planes]]<ul>
+<li>[[Network Layer#control plane|control plane]]</li>
+<li>[[Network Layer#control plane sdn approach|sdn approach]]</li>
+</ul>
+</li>
+<li>[[Network Layer#4.1.2 network service model|network service model]] </li>
+</ul>
+</li>
+<li>[[Network Layer#4.2 inside a router|Inside a Router]]<ul>
+<li>[[Network Layer#4.2.1 input processing &amp; destination based forwarding|input processing &amp; destination based forwarding]]</li>
+<li>[[Network Layer#4.2.2 Switching fabric|switching fabric]]</li>
+<li>[[Network Layer#4.2.3 output processing|output processing]]</li>
+<li>[[Network Layer#4.2.4 queueing|where does queuing occur]]</li>
+<li>[[Network Layer#4.2.5 packet scheduling|packet scheduling]]</li>
+</ul>
+</li>
+<li>[[Network Layer#4.3 ip thing|The Internet Protocol (IP): IPv4, Addressing,IPv6, and More]]<ul>
+<li>[[Network Layer#ipv4 datagram| IPv4 Datagram Format]]</li>
+<li>[[Network Layer#data fragmentation|IPv4 Datagram Fragmentation]]</li>
+<li>[[Network Layer#ipv4 addressing|ipv4 addressing]]</li>
+</ul>
+</li>
+<li>[[Network Layer#4.4 generalized forwarding &amp; sdn|Generalized Forwarding and SDN]]</li>
+<li>[[Network Layer#Middleboxes|Middleboxes]]</li>
+<li></li>
+</ul>
+<h2 id="41-overview">4.1 overview</h2>
+<ul>
+<li>transport layer -&gt; segment</li>
+<li>segment -&gt; network layer</li>
+<li>encapsulated into a datagram -&gt; sender router</li>
+<li>receiver router takes datagram -&gt; network layer</li>
+<li>breaks datagram back to segment -&gt; network layer</li>
+<li><strong>routers dont run on application and transport layer protocols</strong></li>
+</ul>
+<p>roles,
+- primary <strong>data-plane</strong> role of router is to forward datagrams
+- primary <strong>network control plane</strong> role is to coordinate these local, per router forwarding actions.</p>
+<h3 id="411-forwarding-and-routing-data-and-control-planes">4.1.1 forwarding and routing: data and control planes</h3>
+<p>network layers has two <em>main functions</em></p>
+<ul>
+<li><strong>forwarding</strong>, when a packet arrives at a router's input link, the router must move the packet to the appropriate output link. a packet can also be blocked from exiting the router<ul>
+<li>refers to <strong>router-local action</strong></li>
+<li>implemented direcly in hardware</li>
+<li>takes place at very short timescale</li>
+</ul>
+</li>
+<li><strong>routing</strong>, network layer must <em>determine</em> the <strong>route/path</strong> taken by packets as they flow from <em>sender to receiver</em>. the algo's used to figure out the routes are <strong>routing algorithms</strong>.<ul>
+<li>refers to <strong>network-wide</strong> process</li>
+<li>implemented in software</li>
+<li>takes place at large timescales</li>
+</ul>
+</li>
+</ul>
+<p>A key element of the router is the <strong>forwarding table</strong>. router examines fields of recv packet header and using these values it indexes into its table. The table helps <em>determining the output link</em> for this packet.</p>
+<h4 id="control-plane">control plane</h4>
+<p>routing algorithms in the control plane determine the <em>contents</em> of the router's forwarding table. these algo's, for now, are present in each router and each router contains the forwarding and routing functions.</p>
+<p><em>the algo's communicate</em> with each other to share <em>routing information</em> through a <em>routing protocol</em>.</p>
+<p>![[Pasted image 20241003094622.png]]</p>
+<h4 id="control-plane-sdn-approach">control plane: sdn approach</h4>
+<p>in this approach, the routing algorithm, or the control plane which contains this algorithm, is built seperately from the router, this is the <strong>remote controller</strong>.</p>
+<p>the control plane is built in remote data centers that are controlled by ISP's or third party services. the router then communicates with this remote controller exchanging the forwarding table data and other router information.</p>
+<p>here, router -&gt; forwarding function, remote controller -&gt; routing function.</p>
+<p>This setup is known as the <strong>software defined networking</strong> approach. this is more reliable and redundant. in recent times this software has been made open sourced.</p>
+<p>![[Pasted image 20241003095215.png]]</p>
+<h3 id="412-network-service-model">4.1.2 network service model</h3>
+<p>the <strong>network service model</strong> defines the <em>characteristics</em> of <em>end-to-end</em> delivery between sending and receiving hosts.</p>
+<p>the services provided are,
+1. guaranteed delivery
+2. guaranteed delivery with bounded delay
+3. in order packet delivery
+4. guaranteed minimal bandwidth
+5. security</p>
+<p>the network layer provides a single service known as a <strong>best effort service</strong>. this means that the network layer can never guarantee any of the above mentioned services.</p>
+<p>even though it doesn't guarantee the services, the internets best service model combined with adequate bandwidth provisioning is proven to be more than <em>good enough</em>.</p>
+<blockquote>
+<ul>
+<li>Simplicity of mechanism has allowed internet to be widely deployed adopted.</li>
+<li>sufficient provisioning of bandwidth allows performance of real time applications to be good enough for most of the time</li>
+<li>replicated, application layer distributed services connecting close to clients' network, allow services to provided from multiple </li>
+</ul>
+</blockquote>
+<h2 id="42-inside-a-router">4.2 inside a router</h2>
+<p>![[Pasted image 20241007135929.png]]</p>
+<ul>
+<li><strong>input port</strong><ul>
+<li>terminates an incoming physical link at a router (shown at both ends) (this is a <strong>physical layer function</strong>)</li>
+<li>also performs <strong>link layer functions</strong> (rep by middle boxes and input &amp; output ports)</li>
+<li><strong>lookup function</strong> (rightmost box of input port). the forwarding table is consulted where to send the packet to the right output port via the <em>switching fabric</em></li>
+<li><em>control packets</em> from ip port (packets w/ routing info) -&gt; routing processor</li>
+</ul>
+</li>
+<li><strong>switching fabric</strong><ul>
+<li>connections ip port to op port.</li>
+</ul>
+</li>
+<li><strong>output port</strong><ul>
+<li>stores packets recv from s/w fabric</li>
+<li>sends packets to approp links using link &amp; physical layer functions.</li>
+</ul>
+</li>
+<li><strong>routing processor</strong><ul>
+<li>control-plane functions</li>
+<li>executes router protocols</li>
+<li>maintains tables &amp; attached link state information</li>
+<li>computer forwarding table</li>
+<li>in SDN, it communicates with the <em>remote-controller</em> to write down the receiving forward table entries computed by remote controller, into the routers input ports.</li>
+</ul>
+</li>
+</ul>
+<p>types of forwarding,
+- Destination based forwarding
+- General forwarding</p>
+<p>this architecture is almost always implemented in hardware. this is the <strong>dataplane</strong>, which operates at a nanosecond scale.</p>
+<p>whereas, the <strong>control plane</strong> is implemented in software operating at a millisecond or second scale.</p>
+<h3 id="421-input-processing-destination-based-forwarding">4.2.1 input processing &amp; destination based forwarding</h3>
+<p>The input port's 
+- <strong>line terminal</strong> function 
+- and <strong>link-layer processing</strong> implement the physical and link layer functionalities for that input link. 
+- Further, the <strong>lookup performed</strong> is central to the router's operation.</p>
+<p>In lookup, the forwarding table used is either computed by the routing processor or sent by the SDN remote controller. This table is copied from <em>the routing processor -&gt; line cards</em> over a separate bus.</p>
+<p>At each line card, a <strong>shadow copy</strong> is performed, this is done to reduce the <em>centralized processing bottleneck</em>, i.e. it doesn't invoke the routing processor on a per packet basis.</p>
+<blockquote>
+<p>Considering a simple case where the packet received is matched in the table and then forwarded to the appropriate link based on the match. Would this mean we would need to store details of each packet in the table? This would not be optimal.</p>
+</blockquote>
+<p>Routers match something called <strong>prefix</strong> of the packets destination address with the entries in table. If there is any match, the packet is forwarded to a link associated with the match.</p>
+<p>![[Pasted image 20241014094753.png]]
+In this figure, the otherwise states that if there are no matches the <em>default interface</em> will be 3.</p>
+<p>Lets say there is a case when a single packet matches with multiple entries in the table, i.e. the first 21 bits of a packet could match the 3rd entry and the first 24 bits could match the 2nd entry. In this case, the router uses the <strong>longest prefix matching rule</strong>.</p>
+<blockquote>
+<p><strong>Prefix matching</strong> - n bits of a address match n bits in table
+<strong>Longest Prefix Matching</strong> - n bits of an address match n bits of two entries in table, then choose the longer entry.</p>
+</blockquote>
+<p>These lookups are essentially simple to build (<strong>loopkup - search through forwarding tables</strong>), but for larger links, they must be fast. Some chips that are used,
+1. DRAM and faster SRAMs
+2. Ternary Content Addressable Memories (TCAM) (returns in constant time)</p>
+<p>Once the <em>packets link is determined</em>, it's sent to the <strong>switching fabric</strong>. Here it can also be <em>queued</em> at the input port due to other links currently using the fabric.</p>
+<blockquote>
+<p>Although the most important action is the lookup, there are several other key things that need to be taken care of,
+1. The physical and link layer processing
+2. the packets version number, check sum and time-to-live field
+3. <strong>counters</strong> used for network management</p>
+<p><strong>Matching</strong> - input ports steps of lookup up a dest IP address
+<strong>Action</strong> - sending the packet to s/w fabric to the specified output
+The above terms together, <em>match plus action</em> abstraction, are performed in almost all network devices and not just routers.</p>
+</blockquote>
+<h3 id="422-switching-fabric">4.2.2 Switching fabric</h3>
+<p>this is the very heart of the router as this is the place the packets are switched from an input port to an output port. </p>
+<ol>
+<li><strong>Switching via memory</strong><ul>
+<li>simplest form of early routers</li>
+<li>earlier, cpu was the routing processor</li>
+<li>input/output ports were like traditional I/O devices</li>
+<li>i/p signaled the routing processor via interrupt</li>
+<li>packet copied (from ip) -&gt; processor memory</li>
+<li>packet's header -&gt; destination address extracted -&gt; lookup performed to get op port -&gt; packet copied into op port</li>
+<li>if memory bandwidth is B, then <strong>throughput is B/2</strong></li>
+<li>this lookup and storing in memory is done on the <strong>input line cards</strong></li>
+<li>two packets can't be forwarded at once</li>
+</ul>
+</li>
+<li><strong>Switching via bus</strong><ul>
+<li>input port directly forwards packet to output port (w/o routing processor intervening).</li>
+<li>packet is pre-pended with a switch-internal label (header).</li>
+<li>all o/p ports receive the packet but the packet with the matching label is kept and others are discarded</li>
+<li>once the packet reaches the op port, the label is also discarded</li>
+<li>one packet can cross the bus at a time.</li>
+</ul>
+</li>
+<li><strong>Switching via an interconnection network</strong><ul>
+<li>to overcome bandwidth limitation, use sophisticated network</li>
+<li><strong>crossbar</strong> switch with 2N buses (N ip, N op)</li>
+<li>each vertical bus connects with a horizontal bus.</li>
+<li>two packets can cross at the same time if they have different ip &amp; op buses.</li>
+<li>crossbar switch is <strong>non-blocking</strong>, the packet is not blocked from reaching its output port as long as no other packet is going to that output port.</li>
+<li>More sophisticated interconnection networks use multiple stages of switching elements to allow packets from different input ports to proceed towards the same output port at the same time through the <strong>multi-stage switching fabric</strong>.</li>
+<li><strong>Non-Blocking Switching</strong>:<ul>
+<li>The Cisco CRS router uses a "three-stage non-blocking switching" method.</li>
+<li>Non-blocking means that packets can always find a path to their destination without getting stuck due to other traffic.</li>
+</ul>
+</li>
+<li><strong>Scaling Switching Capacity</strong>:<ul>
+<li>A router can increase its capacity by using multiple switching fabrics in parallel.</li>
+<li>This parallel setup allows for greater data handling capabilities.</li>
+</ul>
+</li>
+<li><strong>Packet Splitting and Reassembly</strong>:<ul>
+<li>In the parallel fabric approach, an input port divides a packet into smaller pieces or "chunks."</li>
+<li>These chunks are then distributed ("sprayed") across multiple switching fabrics (K chunks sent through N fabrics).</li>
+<li>At the output port, these chunks are reassembled into the original packet for delivery.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>![[Pasted image 20241014114430.png]]</p>
+<h3 id="423-output-processing">4.2.3 output processing</h3>
+<p>the packets stored in the output ports memory are taken and forwarded to the output link. this includes queueing, de-queueing and physical &amp; link layer processing.</p>
+<h3 id="424-queueing">4.2.4 queueing</h3>
+<p>by our discussion earlier it's clear that both the input &amp; output ports have a queue where the packets are stored for time being, but lets consider a scenario where the packets increase in number and the routers memory is eventually exhausted. Due to the memory being exhausted, there could be <strong>packet loss</strong>.</p>
+<blockquote>
+<p>input/output transmission rate -&gt; $R_{line}$
+Switching fabric transfer rate -&gt; $R_{switch}$</p>
+</blockquote>
+<h4 id="input-queueing">input queueing</h4>
+<p>if switch fabric is not fast enough to transfer all arriving packets through the fabric without delay, then <strong>input queuing</strong> occurs, i.e. packet queue up on input ports.</p>
+<p>considering the switching via a cross-switch, the packet won't experience any blocking unless two packets have the same destination (output ports). But there might be a case where a packet (p2) which is meant to go to, say, output port A, and the packet which is right infront of it (p1), needs to go to, say, output port B, but the port B is currently busy with another packet (pk) hence keeping p1 in waiting. This causes p2 to kept in waiting due to p1. This is called <strong>head-of-line (HOL)</strong> blocking.</p>
+<blockquote>
+<p>HOL - a queued packet in an input queue must wait for transfer through the fabric (even though its output port is free) because it is blocked by another packet at the head of the line (in-front of it).</p>
+</blockquote>
+<h4 id="output-queueing">output queueing</h4>
+<p>if $r_{switch}$ &gt;&gt; $r_{line}$ of the output port, then the packets sent by the swtich will be sent faster than the rate at which output port sends packets to its appropriate links.</p>
+<p>when there is insufficient memory, a decision to drop the packet (arriving or queued) must be made. this policy is called the <strong>drop-tail</strong>.</p>
+<p>at times, packets are dropped before the memory gets full, this is done to send the sender a signal for congestion. multiple policies for <em>proactive packet</em> dropping &amp; <em>marking policies</em> have been analyzed (<strong>Active Queue Management</strong>). Most widely studied AQM -&gt; <strong>Random early detection</strong>.</p>
+<h3 id="425-packet-scheduling">4.2.5 packet scheduling</h3>
+<p>question of determining the order in which queued packets are
+transmitted over an outgoing link.</p>
+<h4 id="fifo">FIFO</h4>
+<ul>
+<li>based on first come first serve basis priority</li>
+<li>packets are transmitted based on the order they have arrived</li>
+<li>the queue-packet discarding policy determines whether <em>packet is dropped or whether packet is removed from the queue</em>.
+![[Pasted image 20241108001312.png]]</li>
+</ul>
+<h4 id="priority-queue">priority queue</h4>
+<ul>
+<li>incoming packets are classified according to <em>priority classes</em></li>
+<li>operators configure a queue to give higher priority to <strong>network management information</strong> packets</li>
+<li>similarly, voice-over-IP packets &gt;&gt; non-real traffic (SMTP, IMAP)</li>
+<li>the individual queues operate in <em>fifo</em> manner</li>
+<li>say a low priority packet is already under transmission when a higher priority packet arrives, the lower priority transmission <em>is not</em> stopped (<strong>non-preemptive priority queue</strong>).
+![[Pasted image 20241123141515.png]]</li>
+</ul>
+<h4 id="round-robin">round robin</h4>
+<ul>
+<li>queued just like in priority queue</li>
+<li>here classes are given equal opportunities to transmit packets, this is the <strong>work conserving queuing</strong> discipline.</li>
+<li>this discipline checks for packets in the current class, if it finds none, it checks the next class</li>
+</ul>
+<p>![[Pasted image 20241123141648.png]]</p>
+<h5 id="weighted-fair-queuing">weighted fair queuing</h5>
+<ul>
+<li>packets are classified and queued in appropriate per-class waiting area</li>
+<li>serve classes in circular manner (1 -&gt; 2 -&gt; 3 -&gt; 1 and so on)</li>
+<li>also <em>work conserving</em></li>
+<li>each class receives a <em>differential amount of service in any interval of time</em>.</li>
+<li>class i -&gt; weight i</li>
+<li>in any time interval, class i -&gt; guaranteed $w_i/(\sum w_j)$ fraction of service</li>
+<li>for transmission rate R, class i -&gt; guaranteed $R*w_i/(\sum w_j)$ throughput</li>
+</ul>
+<p>![[Pasted image 20241123141952.png]]</p>
+<h2 id="43-ip-thing">4.3 ip thing</h2>
+<h3 id="ipv4-datagram">ipv4 datagram</h3>
+<ul>
+<li>network layer packet is called <strong>datagram</strong>.</li>
+<li><strong>version number</strong><ul>
+<li>4 bits</li>
+<li>defines version of IP datagram</li>
+</ul>
+</li>
+<li><strong>header</strong><ul>
+<li>20 byte header</li>
+<li>defines where the payload actually starts in the datagram</li>
+</ul>
+</li>
+<li><strong>type of service (tos)</strong><ul>
+<li>helps differentiate between datagrams</li>
+<li>Example of TOS -&gt; Explicit Congestion Notification (6:7) </li>
+</ul>
+</li>
+<li><strong>datagram length</strong><ul>
+<li>16 bits long</li>
+<li>length of datagram (header + data) - measured in bytes</li>
+<li>max size of datagram - $2^{16} - 1$ = 65,535 bytes</li>
+</ul>
+</li>
+<li><strong>identifier, flags, fragmentation offset</strong><ul>
+<li>used for IP fragmentation</li>
+</ul>
+</li>
+<li><strong>time to live</strong><ul>
+<li>ensures that datagram isn't re-processed and doesn't circulate forever</li>
+<li>TTL is <em>decremented</em> everytime datagram is processed.</li>
+</ul>
+</li>
+<li><strong>protocol</strong><ul>
+<li>indicates which protocol should datagram be passed to in transport layer</li>
+<li>6 - TCP, 17 - UDP</li>
+</ul>
+</li>
+<li><strong>header checksum</strong><ul>
+<li>detects error bits</li>
+<li>router computes header checksum -&gt; checks if there are any errors -&gt; if errors exist datagram is discarded.</li>
+</ul>
+</li>
+<li><strong>source and destination IP address</strong></li>
+<li><strong>options</strong><ul>
+<li>allows header length to be extended</li>
+<li>complicates things as we don't know what the size of the header would be.
+![[Pasted image 20241124120357.png]]<blockquote>
+<p>IP Datagram header - 20 bytes
+IP Datagram header w/ TCP segment -40 bytes (20 + 20 w/ application layer message)</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="data-fragmentation">data fragmentation</h3>
+<ul>
+<li>datagrams have variable size</li>
+<li>datagrams pass through the link layer where they are <em>encapsulated</em> into <strong>link layer frames</strong>.</li>
+<li>link layer has a <em>maximum amount of data</em> that can pass through it (<strong>maximum transmission unit (MTU)</strong>)</li>
+<li>different end-systems have different link layer protocols, having <em>different MTU's</em></li>
+<li>for the case where <strong>MTU &lt;&lt; Datagram size</strong>, we perform <strong>fragmentation</strong> of the Datagram.</li>
+<li>Datagram -&gt; Sub-datagrams -&gt; each sub-datagram is assigned source address, identification number (of original datagram) &amp; destination address.</li>
+<li>Sending host usually increments identification number for each datagram it sends.</li>
+<li>First sub-datagram -&gt; <strong>Flag bit: 1</strong>, Last sub-datagram -&gt; <strong>Flag bit: 0</strong>.</li>
+<li>Destination address checks <strong>id number</strong> to check if datagram is part of a bigger datagram. </li>
+<li>To order them properly, the <strong>offset field</strong> is checked</li>
+</ul>
+<h3 id="ipv4-addressing">ipv4 addressing</h3>
+<ul>
+<li>ip addresses aren't associated with devices.</li>
+<li>IP address are <strong>32 bit</strong> identifiers associated with <strong>interfaces</strong></li>
+<li><strong>Interfaces</strong>: connection between host/router and physical link.</li>
+</ul>
+<h4 id="subnets">subnets</h4>
+<ul>
+<li>IP addresses must be <em>unique</em>. A part of the address is defined by something called <strong>subnet</strong>.</li>
+<li><strong>A subnet</strong> is a network inside a network which allows <em>device interfaces</em> to interact <em>without intervention of a router</em>.</li>
+<li>Each isolated network is <em>a subnet</em>.</li>
+<li>IP addresses -&gt; Subnet Part (common for a given subnet) + Host Part</li>
+<li>Example![[Pasted image 20241124231727.png]]</li>
+<li>In this isolated n/w, <strong>"223.1.3"</strong> part is same for all devices, this is the <em>subnet</em> part. The <strong>"/24"</strong> indicates that 24 bits are the same.</li>
+<li><strong>Classless Interdomain Routing (CIDR)</strong> is the <em>slash notation</em>, it's the subnet portion of the address of arbitrary length.</li>
+</ul>
+<blockquote>
+<p>How does the host get its address in an isolated network?
+How does a subnetwork get its address in an global network?</p>
+</blockquote>
+<h4 id="obtaining-a-block-of-address">obtaining a block of address</h4>
+<ul>
+<li>allotted by the networks ISPs address space.</li>
+<li>![[Pasted image 20241124234143.png]]</li>
+<li>The ISPs block is divided into 8 address spaces.</li>
+<li>These 8 organizations contact the global internet through the main <em>ISP block addr</em>.</li>
+<li>This is called <strong>address aggregation</strong></li>
+<li>![[Pasted image 20241124235151.png]]</li>
+<li>say one organization wants to change its ISPs but also keep the address range, then the new ISP will expect its original range and also the new range from the shifted organization</li>
+<li>![[Pasted image 20241124235202.png]]</li>
+</ul>
+<h4 id="how-isps-get-a-block-of-address">how ISPs get a block of address</h4>
+<ul>
+<li>provided by ICANN</li>
+<li>ICANN allocate IP addresses through 5 <strong>regional registries</strong></li>
+<li>then RRs assign to Local registries.</li>
+</ul>
+<h4 id="obtaining-a-host-address">obtaining a host address</h4>
+<ul>
+<li>protocol used is <strong>Dynamic Host Configuration Protocol (DHCP)</strong> which allows automatic configuration of IP addresses to devices.</li>
+<li>This method is far better and efficient then earlier methods where the <em>sysadmin used to hard-code the address in the config file</em></li>
+<li>when device joins a n/w, for it (the device) to get an ip addr,<ul>
+<li>n/w needs to have <strong>DHCP server</strong>. The host requests and receives an addr through this server by using <em>DHCP protocol</em>.</li>
+<li>when the device leaves, the IP addr is given up. (Can be re-used/reclaimed).</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>DHCP server runs on <strong>port 67 and UDP</strong></p>
+</blockquote>
+<ul>
+<li>Four types of msg's b/w an incoming device and DHCP server<ul>
+<li><strong>DHCP discover</strong><ul>
+<li>msg broadcasted by incoming device to check if DHCP server exists</li>
+</ul>
+</li>
+<li><strong>DHCP offer</strong><ul>
+<li>msg broadcasted by server containing a suggested IP address the incoming device can use.</li>
+</ul>
+</li>
+<li><strong>DHCP request</strong><ul>
+<li>msg broadcasted by incoming device which contains the server proposed address or device wants to renew an old address</li>
+</ul>
+</li>
+<li><strong>DHCP ack</strong><ul>
+<li>msg broadcasted by server which acknowledges the request and grants the device the particular ip address.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>In this example, DHCP -&gt; port 67, client -&gt; port 68![[Pasted image 20241124233756.png]]</p>
+<h3 id="nat">NAT</h3>
+<ul>
+<li>all devices within a LAN will have the ip address from a specific range of addresses, known as <strong>private addresses</strong>.</li>
+<li>datagrams within the local network work with the private ip's.</li>
+<li>but for datagrams to communicate with the global network, they use a static <strong>NAT IP address</strong>.</li>
+<li><strong>Implementation</strong><ul>
+<li>Outgoing datagrams: (source IP address, port #) -&gt; (NAT ip address, new port #)</li>
+<li>Remember in NAT translation table: every mapping of the old port number to the new port number must be done in the table.</li>
+<li>Incoming datagrams: (NAT ip addr, new port #) -&gt; (source ip address, port #)</li>
+</ul>
+</li>
+<li>![[Pasted image 20241125001113.png]]</li>
+</ul>
+<h3 id="ipv6">ipv6</h3>
+<ul>
+<li>provided larger address space</li>
+<li>notion of <strong>flow</strong> (connection b/w end-points) was introduced with ipv6</li>
+<li><strong>source addr and destination addr</strong><ul>
+<li>32 to 128 bits</li>
+<li>new type of address, <strong>anycast</strong> address</li>
+</ul>
+</li>
+<li><strong>flow label</strong><ul>
+<li>identify datagrams between "flows"</li>
+</ul>
+</li>
+<li><strong>priority / traffic class</strong><ul>
+<li>8 bit</li>
+<li>to give priority to certain datagrams in a flow</li>
+<li>like TOS in ipv4</li>
+</ul>
+</li>
+<li><strong>payload length</strong><ul>
+<li>16 bit</li>
+<li>number of bytes in IPv6 datagram.</li>
+</ul>
+</li>
+<li><strong>next header</strong><ul>
+<li>identifies to which protocol the datagram is being transferred to</li>
+</ul>
+</li>
+<li><strong>hop limit</strong><ul>
+<li>contents are decremented by one by each router that forwards the datagram.</li>
+<li>if content = 0, datagram discarded</li>
+<li>similar to TTL</li>
+</ul>
+</li>
+<li>no <strong>checksum</strong>, <strong>fragmentation</strong>, <strong>identification number</strong>, <strong>flag</strong>, <strong>options</strong></li>
+</ul>
+<p>![[Pasted image 20241125004728.png]]</p>
+<h4 id="ipv4-to-ipv6">ipv4 to ipv6</h4>
+<ul>
+<li>both versions try to coexist</li>
+<li>some are ipv4 or ipv6 or both.</li>
+<li><strong>tunneling</strong> allows this to happen</li>
+<li>in tunneling, <em>a datagram inside a datagram</em> is transferred. </li>
+<li><strong>ipv6 datagram inside the ipv4's payload</strong></li>
+<li>say we have two ipv6 routers, which also can do ipv4 stuff\<ul>
+<li>we would usually connect them using an ethernet cable, but we can also connect them using <em>a network of ipv4 routers</em>, this network is called the <strong>tunnel</strong>. </li>
+<li>the datagrams b/w ipv6 routers is passed through the tunnel.</li>
+<li>the datagram is an <strong>ipv4 datagram</strong> w/ the payload as the <strong>ipv6 datagram</strong>.</li>
+</ul>
+</li>
+<li>Physical view![[Pasted image 20241125005802.png]]</li>
+</ul>
+<h2 id="44-generalized-forwarding-sdn">4.4 generalized forwarding &amp; sdn</h2>
+<ul>
+<li>recall <em>match plus action</em></li>
+<li>in <strong>generalized forwarding</strong>, match-plus-action table generalizes the notion of destination based forwarding table.</li>
+<li>here a <strong>flow</strong> table is used. it consists of a <strong>match</strong> and a corresponding <strong>action</strong>.</li>
+<li>most popular implementation of this is <strong>OpenFlow</strong></li>
+</ul>
+<h3 id="openflow">OpenFlow</h3>
+<h4 id="match">Match</h4>
+<ul>
+<li>in OpenFlow, there are a set of header that are to be matched</li>
+<li>![[Pasted image 20241125112654.png]]</li>
+</ul>
+<h4 id="action">Action</h4>
+<ul>
+<li>for a given match, we can perform multiple actions</li>
+<li><strong>Forwarding</strong></li>
+<li><strong>Dropping</strong></li>
+<li><strong>Modify-field</strong></li>
+</ul>
+<h2 id="middleboxes">Middleboxes</h2>
+<ul>
+<li><strong>Any intermediate box, that performs functions apart from normal, standard functions of an IP router on the data path between source host and destination host</strong><ul>
+<li>Standard functions of an ip router -&gt; forwarding</li>
+<li>data path -&gt; meaning middlebox is a network layer thing</li>
+</ul>
+</li>
+<li>Example<ul>
+<li><strong>NAT</strong>/<strong>Firewalls</strong> using generalized based forwarding</li>
+<li><strong>Load Balancers</strong> (aka layer 7 switch)</li>
+<li><strong>Caches</strong></li>
+<li><strong>CDN's</strong></li>
+</ul>
+</li>
+<li>Is a <strong>white-box hardware</strong> which implements open APIs<ul>
+<li>Example is Network function virtualization</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2023 <a href="https://github.com/drdholu"  target="_blank" rel="noopener">drdholu</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/drdholu" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/parasdhole/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+    
+  </body>
+</html>
