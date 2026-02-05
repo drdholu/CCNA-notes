@@ -7,11 +7,17 @@ Let us see why.
 
 Initially, the source needs to learn the L2 address (MAC address) of the destination, so it sends a broadcast packet to the switch, since this is a broadcast packet, all the devices connected receive this packet. The device which was actually meant to receive this, accepts the packet and resends the confirmation packet along with its L2 address (MAC address).
 
+> Who assigns MAC addresses? The Institute of Electrical and Electronics Engineers (**IEEE**) is the primary organization responsible for assigning MAC addresses
+
 Note that this broadcast packet contains L1 and L2 data. The L2 contains something called **ARP Packet Source** which contains the L3 addresses of the source and destination. 
 
 **This broadcast packet is formally called the ARP packet.**
 
 ![Pasted image 20240528142534.png](./images/Pasted%20image%2020240528142534.png)
+
+> ARP entries are of *2 types*, **Dynamic** and **Static**
+> - Dynamic: automatically maintained and generated
+> - Static: admins manually create these entries
 
 ## Different network range devices
 
